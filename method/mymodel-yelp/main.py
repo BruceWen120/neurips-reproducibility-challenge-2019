@@ -229,6 +229,7 @@ def eval_iters(ae_model, dis_model):
         modify_text = fgim_attack(dis_model, latent, target, ae_model, args.max_sequence_length, args.id_bos,
                                         id2text_sentence, args.id_to_word, gold_ans[it])
         add_output(modify_text)
+        break
     return
 
 
