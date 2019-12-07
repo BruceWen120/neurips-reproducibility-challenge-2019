@@ -75,7 +75,7 @@ def add_log(ss):
 
 
 def add_output(ss):
-    with open(args.output_file, 'a') as f:
+    with open(args.output_file, 'w+') as f:
         f.write(str(ss) + '\n')
     return
 
