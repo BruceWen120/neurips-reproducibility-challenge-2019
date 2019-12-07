@@ -19,7 +19,7 @@ from data import prepare_data, non_pair_data_loader, get_cuda, pad_batch_seuqenc
     to_var, calc_bleu, load_human_answer
 
 os.environ['CUDA_LAUNCH_BLOCKING'] = "1"
-# os.environ["CUDA_VISIBLE_DEVICES"] = "0"
+os.environ["CUDA_VISIBLE_DEVICES"] = "0"
 
 ######################################################################################
 #  Environmental parameters
