@@ -56,9 +56,9 @@ parser.add_argument('--label_size', type=int, default=1)
 
 args = parser.parse_args()
 
-args.if_load_from_checkpoint = False
-# args.if_load_from_checkpoint = True
-# args.checkpoint_name = "1557667911"
+# args.if_load_from_checkpoint = False
+args.if_load_from_checkpoint = True
+args.checkpoint_name = "1575759208"
 
 
 ######################################################################################
@@ -75,10 +75,14 @@ def add_log(ss):
 
 
 def add_output(ss):
-    with open(args.output_file, 'w+') as f:
+    with open(args.output_file, 'a') as f:
         f.write(str(ss) + '\n')
     return
 
+def add_result(ss):
+    with open(args.eval_result_file, 'a') as f:
+        f.write(str(ss) + '\n')
+    return
 
 def preparation():
     # set model save path
@@ -90,6 +94,8 @@ def preparation():
     args.current_save_path = 'save/%s/' % timestamp
     args.log_file = args.current_save_path + time.strftime("log_%Y_%m_%d_%H_%M_%S.txt", time.localtime())
     args.output_file = args.current_save_path + time.strftime("output_%Y_%m_%d_%H_%M_%S.txt", time.localtime())
+    # path to save evaluation results like bleu score
+    args.eval_result_file = args.current_save_path + time.strftime("eval_%Y_%m_%d_%H_%M_%S.txt", time.localtime())
     print("create log file at path: %s" % args.log_file)
 
     if os.path.exists(args.current_save_path):
@@ -228,8 +234,10 @@ def eval_iters(ae_model, dis_model):
 
         modify_text = fgim_attack(dis_model, latent, target, ae_model, args.max_sequence_length, args.id_bos,
                                         id2text_sentence, args.id_to_word, gold_ans[it])
-        add_output(modify_text)
-        break
+        output_text = "gold: " + id2text_sentence(gold_ans[it], args.id_to_word) + "\nmodified: " + modify_text
+        add_output(output_text)
+        add_result(calc_bleu(id2text_sentence(gold_ans[it], args.id_to_word)), modify_text)
+        # break
     return
 
 
