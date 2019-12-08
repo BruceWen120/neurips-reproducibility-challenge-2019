@@ -236,7 +236,7 @@ def eval_iters(ae_model, dis_model):
                                         id2text_sentence, args.id_to_word, gold_ans[it])
         output_text = "gold: " + id2text_sentence(gold_ans[it], args.id_to_word) + "\nmodified: " + modify_text
         add_output(output_text)
-        add_result(calc_bleu(id2text_sentence(gold_ans[it], args.id_to_word)), modify_text)
+        add_result(calc_bleu(id2text_sentence(gold_ans[it], args.id_to_word), modify_text))
         # break
     return
 
