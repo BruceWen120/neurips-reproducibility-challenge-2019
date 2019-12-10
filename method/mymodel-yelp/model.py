@@ -466,7 +466,7 @@ def fgim_attack(model, origin_data, target, ae_model, max_sequence_length, id_bo
             generator_text = id2text_sentence(generator_id[0], id_to_word)
             print("| It {:2d} | dis model pred {:5.4f} |".format(it, output[0].item()))
             # print(generator_text)
-            if it >= 10:
+            if it >= 5:
                 print(generator_text)
                 break
     return generator_text
