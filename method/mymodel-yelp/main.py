@@ -58,7 +58,7 @@ args = parser.parse_args()
 
 # args.if_load_from_checkpoint = False
 args.if_load_from_checkpoint = True
-args.checkpoint_name = "1575759208"
+args.checkpoint_name = "1557667911"
 
 
 ######################################################################################
@@ -234,9 +234,9 @@ def eval_iters(ae_model, dis_model):
 
         modify_text = fgim_attack(dis_model, latent, target, ae_model, args.max_sequence_length, args.id_bos,
                                         id2text_sentence, args.id_to_word, gold_ans[it])
-        output_text = "gold: " + id2text_sentence(gold_ans[it], args.id_to_word) + "\nmodified: " + modify_text
+        output_text = str(it) + ":\ngold: " + id2text_sentence(gold_ans[it], args.id_to_word) + "\nmodified: " + modify_text
         add_output(output_text)
-        add_result(calc_bleu(id2text_sentence(gold_ans[it], args.id_to_word), modify_text))
+        add_result(str(it) + ":\n" + str(calc_bleu(id2text_sentence(gold_ans[it], args.id_to_word), modify_text)))
         # break
     return
 
