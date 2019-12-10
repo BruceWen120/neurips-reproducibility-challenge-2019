@@ -14,7 +14,7 @@ import matplotlib
 from matplotlib import pyplot as plt
 
 # Import your model files.
-from model import make_model, Classifier, NoamOpt, LabelSmoothing, fgim_attack
+from model2 import make_model, Classifier, NoamOpt, LabelSmoothing, fgim_attack
 from data import prepare_data, non_pair_data_loader, get_cuda, pad_batch_seuqences, id2text_sentence,\
     to_var, calc_bleu, load_human_answer
 
