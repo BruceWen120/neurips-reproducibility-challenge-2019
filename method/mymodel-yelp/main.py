@@ -18,8 +18,8 @@ from model import make_model, Classifier, NoamOpt, LabelSmoothing, fgim_attack
 from data import prepare_data, non_pair_data_loader, get_cuda, pad_batch_seuqences, id2text_sentence,\
     to_var, calc_bleu, load_human_answer
 
-os.environ['CUDA_LAUNCH_BLOCKING'] = "1"
-os.environ["CUDA_VISIBLE_DEVICES"] = "0,1,3,4"
+# os.environ['CUDA_LAUNCH_BLOCKING'] = "1"
+# os.environ["CUDA_VISIBLE_DEVICES"] = "0,1,3,4"
 
 ######################################################################################
 #  Environmental parameters
@@ -248,7 +248,7 @@ if __name__ == '__main__':
     ae_model = get_cuda(make_model(d_vocab=args.vocab_size,
                                    N=args.num_layers_AE,
                                    d_model=args.transformer_model_size,
-                                #    latent_size=args.latent_size,
+                                   latent_size=args.latent_size,
                                    d_ff=args.transformer_ff_size,
     ))
     dis_model = get_cuda(Classifier(latent_size=args.latent_size, output_size=args.label_size))
