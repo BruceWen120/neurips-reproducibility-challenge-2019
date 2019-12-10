@@ -169,9 +169,13 @@ class non_pair_data_loader():
         for _index in range(len(train_file_list)):
             with open(train_file_list[_index]) as fin:
                 for line in fin:
-                    line = line.strip()
+                    line = line.strip("['],")
                     line = line.split()
-                    parse_line = [int(x) for x in line]
+                    try:
+                        parse_line = [int(x) for x in line]
+                    except:
+                        print(_index)
+                        raise Exception()
                     self.data_label_pairs.append([parse_line, train_label_list[_index]])
 
         if if_shuffle:
