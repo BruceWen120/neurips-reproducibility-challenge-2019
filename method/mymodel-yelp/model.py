@@ -8,6 +8,11 @@ import torch.nn.utils.rnn as rnn_utils
 from data import get_cuda, to_var, calc_bleu
 import numpy as np
 
+def add_output(output_file, ss):
+    with open(output_file, 'a') as f:
+        f.write(str(ss) + '\n')
+    return
+
 
 def clones(module, N):
     """Produce N identical layers."""
@@ -421,7 +426,7 @@ class Classifier(nn.Module):
 
 
 def fgim_attack(model, origin_data, target, ae_model, max_sequence_length, id_bos,
-                id2text_sentence, id_to_word, gold_ans):
+                id2text_sentence, id_to_word, gold_ans, output_file):
     """Fast Gradient Iterative Methods"""
 
     dis_criterion = nn.BCELoss(size_average=True)
@@ -432,6 +437,7 @@ def fgim_attack(model, origin_data, target, ae_model, max_sequence_length, id_bo
     for epsilon in [2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0]:
         it = 0
         data = origin_data
+        output_text = str(epsilon)
         while True:
             print("epsilon:", epsilon)
 
@@ -469,6 +475,7 @@ def fgim_attack(model, origin_data, target, ae_model, max_sequence_length, id_bo
             if it >= 5:
                 print(generator_text)
                 break
+        add_output(output_file, ": ".join([output_text, generator_text])) # save sentence
     return generator_text
 
 

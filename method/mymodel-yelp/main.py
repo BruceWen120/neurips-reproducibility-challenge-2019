@@ -232,11 +232,12 @@ def eval_iters(ae_model, dis_model):
             target = get_cuda(torch.tensor([[0.0]], dtype=torch.float))
         print("target_labels", target)
 
+        add_output("\ngold: " + id2text_sentence(gold_ans[it], args.id_to_word))
         modify_text = fgim_attack(dis_model, latent, target, ae_model, args.max_sequence_length, args.id_bos,
-                                        id2text_sentence, args.id_to_word, gold_ans[it])
-        output_text = str(it) + ":\ngold: " + id2text_sentence(gold_ans[it], args.id_to_word) + "\nmodified: " + modify_text
-        add_output(output_text)
-        add_result(str(it) + ":\n" + str(calc_bleu(id2text_sentence(gold_ans[it], args.id_to_word), modify_text)))
+                                        id2text_sentence, args.id_to_word, gold_ans[it], args.output_file)
+        # output_text = "\ngold: " + id2text_sentence(gold_ans[it], args.id_to_word) + "\nmodified: " + modify_text
+        # add_output(output_text)
+        # add_result(str(it) + ":\n" + str(calc_bleu(id2text_sentence(gold_ans[it], args.id_to_word), modify_text)))
         break
     return
 
