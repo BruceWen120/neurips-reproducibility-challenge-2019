@@ -14,7 +14,7 @@ import matplotlib
 from matplotlib import pyplot as plt
 
 # Import your model files.
-from model2 import make_model, Classifier, NoamOpt, LabelSmoothing, fgim_attack
+from model import make_model, Classifier, NoamOpt, LabelSmoothing, fgim_attack
 from data import prepare_data, non_pair_data_loader, get_cuda, pad_batch_seuqences, id2text_sentence,\
     to_var, calc_bleu, load_human_answer
 
@@ -237,7 +237,7 @@ def eval_iters(ae_model, dis_model):
         output_text = str(it) + ":\ngold: " + id2text_sentence(gold_ans[it], args.id_to_word) + "\nmodified: " + modify_text
         add_output(output_text)
         add_result(str(it) + ":\n" + str(calc_bleu(id2text_sentence(gold_ans[it], args.id_to_word), modify_text)))
-        # break
+        break
     return
 
 
@@ -248,7 +248,7 @@ if __name__ == '__main__':
     ae_model = get_cuda(make_model(d_vocab=args.vocab_size,
                                    N=args.num_layers_AE,
                                    d_model=args.transformer_model_size,
-                                   latent_size=args.latent_size,
+                                #    latent_size=args.latent_size,
                                    d_ff=args.transformer_ff_size,
     ))
     dis_model = get_cuda(Classifier(latent_size=args.latent_size, output_size=args.label_size))
