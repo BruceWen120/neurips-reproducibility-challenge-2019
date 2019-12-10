@@ -263,10 +263,10 @@ if __name__ == '__main__':
         # Load models' params from checkpoint
         ae_model.load_state_dict(torch.load(args.current_save_path + 'ae_model_params.pkl'))
         dis_model.load_state_dict(torch.load(args.current_save_path + 'dis_model_params.pkl'))
+        eval_iters(ae_model, dis_model)
     else:
         train_iters(ae_model, dis_model)
 
-    eval_iters(ae_model, dis_model)
 
     print("Done!")
 
