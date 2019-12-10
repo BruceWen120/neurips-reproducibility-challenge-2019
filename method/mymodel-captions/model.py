@@ -8,6 +8,11 @@ import torch.nn.utils.rnn as rnn_utils
 from data import get_cuda, to_var, calc_bleu
 import numpy as np
 
+def add_output(output_file, ss):
+    with open(output_file, 'a') as f:
+        f.write(str(ss) + '\n')
+    return
+
 
 def clones(module, N):
     """Produce N identical layers."""
@@ -79,8 +84,8 @@ class PositionalEncoding(nn.Module):
 
         # Compute the positional encodings once in log space.
         pe = torch.zeros(max_len, d_model)
-        position = torch.arange(0, max_len).unsqueeze(1)
-        div_term = torch.exp(torch.arange(0, d_model, 2) *
+        position = torch.arange(0, max_len, dtype=torch.float).unsqueeze(1)
+        div_term = torch.exp(torch.arange(0, d_model, 2, dtype=torch.float) *
                              -(math.log(10000.0) / d_model))
         pe[:, 0::2] = torch.sin(position * div_term)
         pe[:, 1::2] = torch.cos(position * div_term)
@@ -421,7 +426,7 @@ class Classifier(nn.Module):
 
 
 def fgim_attack(model, origin_data, target, ae_model, max_sequence_length, id_bos,
-                id2text_sentence, id_to_word, gold_ans):
+                id2text_sentence, id_to_word, gold_ans, output_file):
     """Fast Gradient Iterative Methods"""
 
     dis_criterion = nn.BCELoss(size_average=True)
@@ -432,6 +437,7 @@ def fgim_attack(model, origin_data, target, ae_model, max_sequence_length, id_bo
     for epsilon in [2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0]:
         it = 0
         data = origin_data
+        output_text = str(epsilon)
         while True:
             print("epsilon:", epsilon)
 
@@ -465,10 +471,12 @@ def fgim_attack(model, origin_data, target, ae_model, max_sequence_length, id_bo
                                                     start_id=id_bos)
             generator_text = id2text_sentence(generator_id[0], id_to_word)
             print("| It {:2d} | dis model pred {:5.4f} |".format(it, output[0].item()))
-            print(generator_text)
+            # print(generator_text)
             if it >= 5:
+                print(generator_text)
                 break
-    return
+        add_output(output_file, ": ".join([output_text, generator_text])) # save sentence
+    return generator_text
 
 
 
