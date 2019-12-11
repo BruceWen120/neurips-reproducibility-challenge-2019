@@ -154,7 +154,7 @@ class Encoder(nn.Module):
 # change encoder to lstm
 class AbLSTMEncoder(nn.Module):
     def __init__(self, size, hidden_size, dropout):
-        super(AbEncoder, self).__init__()
+        super(AbLSTMEncoder, self).__init__()
         self.lstm = nn.LSTM(
             input_size=size, 
             hidden_size=hidden_size, 
@@ -165,6 +165,15 @@ class AbLSTMEncoder(nn.Module):
     def forward(self, x):
         out, hidden = self.lstm(x)
         return out
+
+# change encoder to attention
+class AbAttEncoder(nn.Module):
+    def __init__(self, size, self_attn):
+        super(AbAttEncoder, self).__init__()
+        self.self_attn = self_attn
+
+    def forward(self, x, mask):
+        return self.self_attn(x, x, x, mask)
 
 
 class EncoderLayer(nn.Module):
@@ -198,7 +207,7 @@ class Decoder(nn.Module):
 # change encoder decoder to lstm
 class AbLSTMDecoder(nn.Module):
     def __init__(self, size, hidden_size, dropout):
-        super(AbDecoder, self).__init__()
+        super(AbLSTMDecoder, self).__init__()
         self.lstm = nn.LSTM(
             input_size=size, 
             hidden_size=hidden_size, 
@@ -209,6 +218,15 @@ class AbLSTMDecoder(nn.Module):
     def forward(self, x):
         out, hidden = self.lstm(x)
         return out
+
+# change encoder decoder to attention
+class AbAttDecoder(nn.Module):
+    def __init__(self, size, self_attn):
+        super(AbAttDecoder, self).__init__()
+        self.self_attn = self_attn
+
+    def forward(self, x, mask):
+        return self.self_attn(x, x, x, mask)
 
 class DecoderLayer(nn.Module):
     """Decoder is made of self-attn, src-attn, and feed forward (defined below)"""
@@ -340,9 +358,11 @@ def make_model(d_vocab, N, d_model, latent_size, d_ff=1024, h=4, dropout=0.1):
     share_embedding = Embeddings(d_model, d_vocab)
     model = EncoderDecoder(
         # AbLSTMEncoder(d_model, d_model, dropout),
-        Encoder(EncoderLayer(d_model, c(attn), c(ff), dropout), N),
-        Decoder(DecoderLayer(d_model, c(attn), c(attn), c(ff), dropout), N),
+        AbAttEncoder(d_model, c(attn)),
+        # Encoder(EncoderLayer(d_model, c(attn), c(ff), dropout), N),
+        # Decoder(DecoderLayer(d_model, c(attn), c(attn), c(ff), dropout), N),
         # AbLSTMDecoder(latent_size, d_model, dropout),
+        AbAttDecoder(d_model, c(attn)),
         # nn.Sequential(Embeddings(d_model, d_vocab), c(position)),
         # nn.Sequential(Embeddings(d_model, d_vocab), c(position)),
         nn.Sequential(share_embedding, c(position)),
