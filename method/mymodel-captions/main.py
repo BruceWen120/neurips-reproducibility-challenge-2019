@@ -55,7 +55,7 @@ parser.add_argument('--learning_rate', type=float, default=0.001)
 parser.add_argument('--label_size', type=int, default=1)
 
 
-# args = parser.parse_args()
+args = parser.parse_args()
 # args.if_load_from_checkpoint = False
 
 args.if_load_from_checkpoint = True
