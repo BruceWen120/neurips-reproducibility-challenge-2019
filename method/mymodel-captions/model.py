@@ -305,20 +305,21 @@ class EncoderDecoder(nn.Module):
     # def encode(self, src):
     #     return self.encoder(self.src_embed(src))
 
+    # def decode(self, memory, tgt, tgt_mask):
+    #     # memory: (batch_size, 1, d_model)
+    #     src_mask = get_cuda(torch.ones(memory.size(0), 1, 1).long())
+    #     # print("src_mask here", src_mask)
+    #     # print("src_mask", src_mask.size())
+    #     return self.decoder(self.tgt_embed(tgt), memory, src_mask, tgt_mask)
+
     def decode(self, memory, tgt, tgt_mask):
         # memory: (batch_size, 1, d_model)
         src_mask = get_cuda(torch.ones(memory.size(0), 1, 1).long())
         # print("src_mask here", src_mask)
         # print("src_mask", src_mask.size())
-        return self.decoder(self.tgt_embed(tgt), memory, src_mask, tgt_mask)
-
-    # def decode(self,memory,  tgt):
-    #     # memory: (batch_size, 1, d_model)
-    #     src_mask = get_cuda(torch.ones(memory.size(0), 1, 1).long())
-    #     # print("src_mask here", src_mask)
-    #     # print("src_mask", src_mask.size())
-    #     # return self.decoder(self.tgt_embed(tgt), memory, src_mask, tgt_mask)
-    #     return self.decoder(self.tgt_embed(tgt))
+        # return self.decoder(self.tgt_embed(tgt), memory, src_mask, tgt_mask)
+        return self.decoder(memory, tgt_mask)  # att decoder
+        # return self.decoder(self.tgt_embed(tgt))
 
     def greedy_decode(self, latent, max_len, start_id):
         '''
@@ -336,7 +337,8 @@ class EncoderDecoder(nn.Module):
             # print("ys", ys.size())  # (batch_size, i)
             # print("tgt_mask", subsequent_mask(ys.size(1)).size())  # (1, i, i)
             out = self.decode(latent.unsqueeze(1), to_var(ys), to_var(subsequent_mask(ys.size(1)).long()))
-            # out = self.decode(latent.unsqueeze(1), to_var(ys))
+            # out = self.decode(latent.unsqueeze(1), to_var(ys)) # this is lstm
+            out = self.decode(latent.unsqueeze(1), to_var(ys), to_var(subsequent_mask(ys.size(1)).long()))
             prob = self.generator(out[:, -1])
             # print("prob", prob.size())  # (batch_size, vocab_size)
             _, next_word = torch.max(prob, dim=1)
