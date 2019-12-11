@@ -152,7 +152,7 @@ class Encoder(nn.Module):
         return self.norm(x)
 
 # change encoder to lstm
-class AbEncoder(nn.Module):
+class AbLSTMEncoder(nn.Module):
     def __init__(self, size, hidden_size, dropout):
         super(AbEncoder, self).__init__()
         self.lstm = nn.LSTM(
@@ -196,7 +196,7 @@ class Decoder(nn.Module):
         return self.norm(x)
 
 # change encoder decoder to lstm
-class AbDecoder(nn.Module):
+class AbLSTMDecoder(nn.Module):
     def __init__(self, size, hidden_size, dropout):
         super(AbDecoder, self).__init__()
         self.lstm = nn.LSTM(
@@ -339,10 +339,10 @@ def make_model(d_vocab, N, d_model, latent_size, d_ff=1024, h=4, dropout=0.1):
     position = PositionalEncoding(d_model, dropout)
     share_embedding = Embeddings(d_model, d_vocab)
     model = EncoderDecoder(
-        # AbEncoder(d_model, d_model, dropout),
+        # AbLSTMEncoder(d_model, d_model, dropout),
         Encoder(EncoderLayer(d_model, c(attn), c(ff), dropout), N),
         Decoder(DecoderLayer(d_model, c(attn), c(attn), c(ff), dropout), N),
-        # AbDecoder(latent_size, d_model, dropout),
+        # AbLSTMDecoder(latent_size, d_model, dropout),
         # nn.Sequential(Embeddings(d_model, d_vocab), c(position)),
         # nn.Sequential(Embeddings(d_model, d_vocab), c(position)),
         nn.Sequential(share_embedding, c(position)),
