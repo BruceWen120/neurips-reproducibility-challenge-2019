@@ -225,8 +225,8 @@ class AbAttDecoder(nn.Module):
         super(AbAttDecoder, self).__init__()
         self.self_attn = self_attn
 
-    def forward(self, x, mask):
-        return self.self_attn(x, x, x, mask)
+    def forward(self, x, memory, src_mask):
+        return self.src_attn(x, memory, memory, src_mask)
 
 class DecoderLayer(nn.Module):
     """Decoder is made of self-attn, src-attn, and feed forward (defined below)"""
@@ -281,8 +281,8 @@ class EncoderDecoder(nn.Module):
         """
         Take in and process masked src and target sequences.
         """
-        latent = self.encode(src, src_mask)  # (batch_size, max_src_seq, d_model)
-        # latent = self.encode(src)
+        # latent = self.encode(src, src_mask)  # (batch_size, max_src_seq, d_model)
+        latent = self.encode(src)
         latent = self.sigmoid(latent)
         # memory = self.position_layer(memory)
 
@@ -293,17 +293,18 @@ class EncoderDecoder(nn.Module):
         # latent = self.memory2latent(memory)
         # memory = self.latent2memory(latent)  # (batch_size, max_src_seq, d_model)
 
-        logit = self.decode(latent.unsqueeze(1), tgt, tgt_mask)  # (batch_size, max_tgt_seq, d_model)
+        # logit = self.decode(latent.unsqueeze(1), tgt, tgt_mask)  # (batch_size, max_tgt_seq, d_model)
         # logit = self.decode(latent.unsqueeze(1), tgt)
+        logit = self.decode(latent.unsqueeze(1), tgt)    # lstm
         prob = self.generator(logit)  # (batch_size, max_seq, vocab_size)
         return latent, prob
 
 
 
-    def encode(self, src, src_mask):
-        return self.encoder(self.src_embed(src), src_mask)
-    # def encode(self, src):
-    #     return self.encoder(self.src_embed(src))
+    # def encode(self, src, src_mask):
+    #     return self.encoder(self.src_embed(src), src_mask)
+    def encode(self, src):
+        return self.encoder(self.src_embed(src))
 
     # def decode(self, memory, tgt, tgt_mask):
     #     # memory: (batch_size, 1, d_model)
@@ -312,14 +313,13 @@ class EncoderDecoder(nn.Module):
     #     # print("src_mask", src_mask.size())
     #     return self.decoder(self.tgt_embed(tgt), memory, src_mask, tgt_mask)
 
-    def decode(self, memory, tgt, tgt_mask):
+    def decode(self, memory, tgt):
         # memory: (batch_size, 1, d_model)
         src_mask = get_cuda(torch.ones(memory.size(0), 1, 1).long())
         # print("src_mask here", src_mask)
         # print("src_mask", src_mask.size())
-        # return self.decoder(self.tgt_embed(tgt), memory, src_mask, tgt_mask)
-        return self.decoder(memory, tgt_mask)  # att decoder
-        # return self.decoder(self.tgt_embed(tgt))
+        # return self.decoder(self.tgt_embed(tgt), memory, src_mask)  # att decoder
+        return self.decoder(self.tgt_embed(tgt))
 
     def greedy_decode(self, latent, max_len, start_id):
         '''
@@ -336,9 +336,9 @@ class EncoderDecoder(nn.Module):
             # print("="*10, i)
             # print("ys", ys.size())  # (batch_size, i)
             # print("tgt_mask", subsequent_mask(ys.size(1)).size())  # (1, i, i)
-            out = self.decode(latent.unsqueeze(1), to_var(ys), to_var(subsequent_mask(ys.size(1)).long()))
-            # out = self.decode(latent.unsqueeze(1), to_var(ys)) # this is lstm
-            out = self.decode(latent.unsqueeze(1), to_var(ys), to_var(subsequent_mask(ys.size(1)).long()))
+            # out = self.decode(latent.unsqueeze(1), to_var(ys), to_var(subsequent_mask(ys.size(1)).long()))
+            out = self.decode(latent.unsqueeze(1), to_var(ys)) # this is lstm
+            # out = self.decode(latent.unsqueeze(1), to_var(ys))  # this is attn
             prob = self.generator(out[:, -1])
             # print("prob", prob.size())  # (batch_size, vocab_size)
             _, next_word = torch.max(prob, dim=1)
@@ -359,12 +359,12 @@ def make_model(d_vocab, N, d_model, latent_size, d_ff=1024, h=4, dropout=0.1):
     position = PositionalEncoding(d_model, dropout)
     share_embedding = Embeddings(d_model, d_vocab)
     model = EncoderDecoder(
-        # AbLSTMEncoder(d_model, d_model, dropout),
-        AbAttEncoder(d_model, c(attn)),
+        AbLSTMEncoder(d_model, d_model, dropout),
+        # AbAttEncoder(d_model, c(attn)),
         # Encoder(EncoderLayer(d_model, c(attn), c(ff), dropout), N),
         # Decoder(DecoderLayer(d_model, c(attn), c(attn), c(ff), dropout), N),
-        # AbLSTMDecoder(latent_size, d_model, dropout),
-        AbAttDecoder(d_model, c(attn)),
+        AbLSTMDecoder(latent_size, d_model, dropout),
+        # AbAttDecoder(d_model, c(attn)),
         # nn.Sequential(Embeddings(d_model, d_vocab), c(position)),
         # nn.Sequential(Embeddings(d_model, d_vocab), c(position)),
         nn.Sequential(share_embedding, c(position)),
