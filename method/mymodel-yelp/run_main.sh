@@ -1,6 +1,5 @@
 #!/bin/bash
 
-CUDA_VISIBLE_DEVICES=6,7,8 python main.py \
-    --transformer_model_size 512 \
-    --latent_size 512 \
-    --batch_size 1024
+CUDA_VISIBLE_DEVICES=3,4,5 python main.py \
+    --batch_size 1400 \
+    --num_layers_AE 1
