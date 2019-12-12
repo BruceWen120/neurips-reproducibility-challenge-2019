@@ -533,9 +533,9 @@ def fgim_attack(model, origin_data, target, ae_model, max_sequence_length, id_bo
             # data = perturbed_data
             epsilon = epsilon * 0.9
 
-            generator_id = ae_model.greedy_decode(data,
-                                                    max_len=max_sequence_length,
-                                                    start_id=id_bos)
+            # generator_id = ae_model.greedy_decode(data,
+            #                                         max_len=max_sequence_length,
+            #                                         start_id=id_bos)
             try:
                 generator_id = ae_model.greedy_decode(data,
                                                     max_len=max_sequence_length,
