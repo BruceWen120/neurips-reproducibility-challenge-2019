@@ -58,7 +58,7 @@ args = parser.parse_args()
 
 # args.if_load_from_checkpoint = False
 args.if_load_from_checkpoint = True
-args.checkpoint_name = "1576109322"
+args.checkpoint_name = "1576097025"
 
 
 ######################################################################################
