@@ -536,6 +536,14 @@ def fgim_attack(model, origin_data, target, ae_model, max_sequence_length, id_bo
             generator_id = ae_model.greedy_decode(data,
                                                     max_len=max_sequence_length,
                                                     start_id=id_bos)
+            try:
+                generator_id = ae_model.greedy_decode(data,
+                                                    max_len=max_sequence_length,
+                                                    start_id=id_bos)
+            except:
+                generator_id = ae_model.module.greedy_decode(data,
+                                                    max_len=max_sequence_length,
+                                                    start_id=id_bos)
             generator_text = id2text_sentence(generator_id[0], id_to_word)
             print("| It {:2d} | dis model pred {:5.4f} |".format(it, output[0].item()))
             # print(generator_text)
