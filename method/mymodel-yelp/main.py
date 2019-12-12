@@ -58,7 +58,7 @@ args = parser.parse_args()
 
 # args.if_load_from_checkpoint = False
 args.if_load_from_checkpoint = True
-args.checkpoint_name = "1576109322"
+args.checkpoint_name = "1576119110"
 
 
 ######################################################################################
@@ -214,9 +214,12 @@ def eval_iters(ae_model, dis_model):
 
 
     add_log("Start eval process.")
-    ae_model.eval()
-    dis_model.eval()
+    # ae_model.eval()
+    # dis_model.eval()
+
     for it in range(eval_data_loader.num_batch):
+        ae_model.eval()
+        dis_model.eval()
         batch_sentences, tensor_labels, \
         tensor_src, tensor_src_mask, tensor_tgt, tensor_tgt_y, \
         tensor_tgt_mask, tensor_ntokens = eval_data_loader.next_batch()
@@ -226,9 +229,14 @@ def eval_iters(ae_model, dis_model):
         print("origin_labels", tensor_labels)
 
         latent, out = ae_model.forward(tensor_src, tensor_tgt, tensor_src_mask, tensor_tgt_mask)
-        generator_text = ae_model.greedy_decode(latent,
-                                                max_len=args.max_sequence_length,
-                                                start_id=args.id_bos)
+        try:
+            generator_text = ae_model.greedy_decode(latent,
+                                                    max_len=args.max_sequence_length,
+                                                    start_id=args.id_bos)
+        except:
+            generator_text = ae_model.module.greedy_decode(latent,
+                                                    max_len=args.max_sequence_length,
+                                                    start_id=args.id_bos)
         print(id2text_sentence(generator_text[0], args.id_to_word))
 
         # Define target label
@@ -261,6 +269,8 @@ if __name__ == '__main__':
 
     if args.if_load_from_checkpoint:
         # Load models' params from checkpoint
+        ae_model = torch.nn.DataParallel(ae_model)
+        dis_model = torch.nn.DataParallel(dis_model)
         ae_model.load_state_dict(torch.load(args.current_save_path + 'ae_model_params.pkl'))
         dis_model.load_state_dict(torch.load(args.current_save_path + 'dis_model_params.pkl'))
         eval_iters(ae_model, dis_model)
