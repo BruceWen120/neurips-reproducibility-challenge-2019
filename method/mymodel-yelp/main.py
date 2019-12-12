@@ -19,7 +19,7 @@ from data import prepare_data, non_pair_data_loader, get_cuda, pad_batch_seuqenc
     to_var, calc_bleu, load_human_answer
 
 # os.environ['CUDA_LAUNCH_BLOCKING'] = "1"
-os.environ["CUDA_VISIBLE_DEVICES"] = "6,7,8"
+# os.environ["CUDA_VISIBLE_DEVICES"] = "6,7,8"
 
 ######################################################################################
 #  Environmental parameters
@@ -130,8 +130,8 @@ def train_iters(ae_model, dis_model):
     )
     train_data_loader.create_batches(args.train_file_list, args.train_label_list, if_shuffle=True)
     add_log("Start train process.")
-    ae_model.train()
-    dis_model.train()
+    # ae_model.train()
+    # dis_model.train()
 
     ae_optimizer = NoamOpt(ae_model.src_embed[0].d_model, 1, 2000,
                            torch.optim.Adam(ae_model.parameters(), lr=0, betas=(0.9, 0.98), eps=1e-9))
@@ -140,10 +140,15 @@ def train_iters(ae_model, dis_model):
     ae_criterion = get_cuda(LabelSmoothing(size=args.vocab_size, padding_idx=args.id_pad, smoothing=0.1))
     dis_criterion = nn.BCELoss(size_average=True)
 
+    ae_model = torch.nn.DataParallel(ae_model)
+    dis_model = torch.nn.DataParallel(dis_model)
+
     for epoch in range(200):
         print('-' * 94)
         epoch_start_time = time.time()
         for it in range(train_data_loader.num_batch):
+            ae_model.train()
+            dis_model.train()
             batch_sentences, tensor_labels, \
             tensor_src, tensor_src_mask, tensor_tgt, tensor_tgt_y, \
             tensor_tgt_mask, tensor_ntokens = train_data_loader.next_batch()
@@ -174,11 +179,11 @@ def train_iters(ae_model, dis_model):
                     '| epoch {:3d} | {:5d}/{:5d} batches | rec loss {:5.4f} | dis loss {:5.4f} |'.format(
                         epoch, it, train_data_loader.num_batch, loss_rec, loss_dis))
 
-                print(id2text_sentence(tensor_tgt_y[0], args.id_to_word))
-                generator_text = ae_model.greedy_decode(latent,
-                                                        max_len=args.max_sequence_length,
-                                                        start_id=args.id_bos)
-                print(id2text_sentence(generator_text[0], args.id_to_word))
+                # print(id2text_sentence(tensor_tgt_y[0], args.id_to_word))
+                # generator_text = ae_model.greedy_decode(latent,
+                #                                         max_len=args.max_sequence_length,
+                #                                         start_id=args.id_bos)
+                # print(id2text_sentence(generator_text[0], args.id_to_word))
 
         add_log(
             '| end of epoch {:3d} | time: {:5.2f}s |'.format(

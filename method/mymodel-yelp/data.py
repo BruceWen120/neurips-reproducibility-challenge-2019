@@ -54,10 +54,13 @@ def to_var(x, volatile=False):
     return Variable(x, volatile=volatile)
 
 
-def get_cuda(tensor):
-    # if torch.cuda.is_available():
-    #     tensor = tensor
-    return tensor.cuda()
+# def get_cuda(tensor):
+#     # if torch.cuda.is_available():
+#     #     tensor = tensor
+#     return tensor.cuda()
+
+def get_cuda(obj):
+    return obj.to(torch.device("cuda"))
 
 
 def load_word_dict_info(word_dict_file, max_num):
