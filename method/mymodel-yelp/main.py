@@ -12,7 +12,6 @@ from torch import optim
 import numpy
 import matplotlib
 from matplotlib import pyplot as plt
-import encoding
 
 # Import your model files.
 from model import make_model, Classifier, NoamOpt, LabelSmoothing, fgim_attack
