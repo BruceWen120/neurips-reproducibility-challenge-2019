@@ -302,10 +302,10 @@ class EncoderDecoder(nn.Module):
 
 
 
-    # def encode(self, src, src_mask):
-    #     return self.encoder(self.src_embed(src), src_mask)
-    def encode(self, src):
-        return self.encoder(self.src_embed(src))
+    def encode(self, src, src_mask):
+        return self.encoder(self.src_embed(src), src_mask)
+    # def encode(self, src):
+    #     return self.encoder(self.src_embed(src))
 
     def decode(self, memory, tgt, tgt_mask):
         # memory: (batch_size, 1, d_model)
