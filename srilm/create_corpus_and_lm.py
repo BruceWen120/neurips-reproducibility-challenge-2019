@@ -9,9 +9,9 @@ id_to_word = [x.split("\t")[0] for x in id_to_word]
 neg_train = [" ".join([id_to_word[int(i)] for i in line.strip().split()]) for line in (DATA_PATH / "sentiment.train.0").read_text().split("\n")]
 neg_test = [" ".join([id_to_word[int(i)] for i in line.strip().split()]) for line in (DATA_PATH / "sentiment.test.0").read_text().split("\n")]
 neg_valid = [" ".join([id_to_word[int(i)] for i in line.strip().split()]) for line in (DATA_PATH / "sentiment.dev.0").read_text().split("\n")]
-pos_train = [" ".join([id_to_word[int(i)] for i in line.strip().split()]) for line in (DATA_PATH / "sentiment.train.0").read_text().split("\n")]
-pos_test = [" ".join([id_to_word[int(i)] for i in line.strip().split()]) for line in (DATA_PATH / "sentiment.test.0").read_text().split("\n")]
-pos_valid = [" ".join([id_to_word[int(i)] for i in line.strip().split()]) for line in (DATA_PATH / "sentiment.dev.0").read_text().split("\n")]
+pos_train = [" ".join([id_to_word[int(i)] for i in line.strip().split()]) for line in (DATA_PATH / "sentiment.train.1").read_text().split("\n")]
+pos_test = [" ".join([id_to_word[int(i)] for i in line.strip().split()]) for line in (DATA_PATH / "sentiment.test.1").read_text().split("\n")]
+pos_valid = [" ".join([id_to_word[int(i)] for i in line.strip().split()]) for line in (DATA_PATH / "sentiment.dev.1").read_text().split("\n")]
 
 corpus = neg_train + neg_test + neg_valid + pos_train + pos_test + pos_valid
 
