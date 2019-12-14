@@ -84,7 +84,7 @@ def evaluate(hyp: List[str], ref: List[str], dataset: str):
     model_same_as_human_acc = np.sum(model_same_as_human) / len(model_same_as_human)
 
     eval["human_acc"] = human_acc
-    eval["model_acc"] = human_acc
+    eval["model_acc"] = model_acc
     eval["model_same_as_human_acc"] = model_same_as_human_acc
     print("\nACC1 (pred on human = labels): \n", human_acc)
     print("\nACC2 (pred on model = labels): \n", model_acc)
