@@ -12,6 +12,7 @@ from torch import optim
 import numpy
 import matplotlib
 from matplotlib import pyplot as plt
+import encoding
 
 # Import your model files.
 from model import make_model, Classifier, NoamOpt, LabelSmoothing, fgim_attack
@@ -137,11 +138,14 @@ def train_iters(ae_model, dis_model):
                            torch.optim.Adam(ae_model.parameters(), lr=0, betas=(0.9, 0.98), eps=1e-9))
     dis_optimizer = torch.optim.Adam(dis_model.parameters(), lr=0.0001)
 
-    ae_criterion = get_cuda(LabelSmoothing(size=args.vocab_size, padding_idx=args.id_pad, smoothing=0.1))
+    # ae_criterion = get_cuda(LabelSmoothing(size=args.vocab_size, padding_idx=args.id_pad, smoothing=0.1))
+    ae_criterion = encoding.nn.DataParallelCriterion(LabelSmoothing(size=args.vocab_size, padding_idx=args.id_pad, smoothing=0.1))
     dis_criterion = nn.BCELoss(size_average=True)
 
-    ae_model = torch.nn.DataParallel(ae_model)
-    dis_model = torch.nn.DataParallel(dis_model)
+    # ae_model = torch.nn.DataParallel(ae_model)
+    # dis_model = torch.nn.DataParallel(dis_model)
+    ae_model = encoding.nn.DataParallelModel(ae_model)
+    dis_model = encoding.nn.DataParallelModel(dis_model)
 
     for epoch in range(200):
         print('-' * 94)
