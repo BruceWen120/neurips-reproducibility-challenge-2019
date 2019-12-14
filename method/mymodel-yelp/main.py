@@ -138,20 +138,10 @@ def train_iters(ae_model, dis_model):
                            torch.optim.Adam(ae_model.parameters(), lr=0, betas=(0.9, 0.98), eps=1e-9))
     dis_optimizer = torch.optim.Adam(dis_model.parameters(), lr=0.0001)
 
-    ae_criterion = torch.nn.parallel.DistributedDataParallel(get_cuda(LabelSmoothing(size=args.vocab_size, padding_idx=args.id_pad, smoothing=0.1)),
-                                                          device_ids=[args.local_rank],
-                                                          output_device=args.local_rank,
-                                                          find_unused_parameters=True)
-    dis_criterion = torch.nn.parallel.DistributedDataParallel(nn.BCELoss(size_average=True), device_ids=[args.local_rank],
-                                                          output_device=args.local_rank,
-                                                          find_unused_parameters=True)
-
-    ae_model = torch.nn.parallel.DistributedDataParallel(torch.nn.DataParallel(ae_model), device_ids=[args.local_rank],
-                                                          output_device=args.local_rank,
-                                                          find_unused_parameters=True)
-    dis_model = torch.nn.parallel.DistributedDataParallel(torch.nn.DataParallel(dis_model), device_ids=[args.local_rank],
-                                                          output_device=args.local_rank,
-                                                          find_unused_parameters=True)
+    ae_criterion = get_cuda(LabelSmoothing(size=args.vocab_size, padding_idx=args.id_pad, smoothing=0.1))
+    dis_criterion = nn.BCELoss(size_average=True)
+    ae_model = torch.nn.DataParallel(ae_model)
+    dis_model = torch.nn.DataParallel(dis_model)
 
     for epoch in range(200):
         print('-' * 94)
