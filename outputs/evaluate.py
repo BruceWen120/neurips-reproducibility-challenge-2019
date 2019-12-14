@@ -128,7 +128,7 @@ if __name__ == '__main__':
     original_results = False
     if not original_results:
         # load and parse results
-        results_path = Path("../results/yelp_1transformer_2019_12_12_11_09_39.txt")
+        results_path = Path("../results/yelp_pretrained_output_2019_12_11_15_42_28.txt")
         results_dict = parse_results(results_path)
         eval_path = results_path.parent / ("eval_" + results_path.name[:-4] + ".json")
     else:
