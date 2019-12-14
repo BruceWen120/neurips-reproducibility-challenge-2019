@@ -53,6 +53,7 @@ parser.add_argument('--word_dropout', type=float, default=1.0)
 parser.add_argument('--embedding_dropout', type=float, default=0.5)
 parser.add_argument('--learning_rate', type=float, default=0.001)
 parser.add_argument('--label_size', type=int, default=1)
+parser.add_argument('--local_rank', type=int, default=-1)
 
 
 args = parser.parse_args()
@@ -138,14 +139,20 @@ def train_iters(ae_model, dis_model):
                            torch.optim.Adam(ae_model.parameters(), lr=0, betas=(0.9, 0.98), eps=1e-9))
     dis_optimizer = torch.optim.Adam(dis_model.parameters(), lr=0.0001)
 
-    # ae_criterion = get_cuda(LabelSmoothing(size=args.vocab_size, padding_idx=args.id_pad, smoothing=0.1))
-    ae_criterion = encoding.nn.DataParallelCriterion(LabelSmoothing(size=args.vocab_size, padding_idx=args.id_pad, smoothing=0.1))
-    dis_criterion = nn.BCELoss(size_average=True)
+    ae_criterion = torch.nn.parallel.DistributedDataParallel(get_cuda(LabelSmoothing(size=args.vocab_size, padding_idx=args.id_pad, smoothing=0.1)),
+                                                          device_ids=[args.local_rank],
+                                                          output_device=args.local_rank,
+                                                          find_unused_parameters=True)
+    dis_criterion = torch.nn.parallel.DistributedDataParallel(nn.BCELoss(size_average=True), device_ids=[args.local_rank],
+                                                          output_device=args.local_rank,
+                                                          find_unused_parameters=True)
 
-    # ae_model = torch.nn.DataParallel(ae_model)
-    # dis_model = torch.nn.DataParallel(dis_model)
-    ae_model = encoding.nn.DataParallelModel(ae_model)
-    dis_model = encoding.nn.DataParallelModel(dis_model)
+    ae_model = torch.nn.parallel.DistributedDataParallel(torch.nn.DataParallel(ae_model), device_ids=[args.local_rank],
+                                                          output_device=args.local_rank,
+                                                          find_unused_parameters=True)
+    dis_model = torch.nn.parallel.DistributedDataParallel(torch.nn.DataParallel(dis_model), device_ids=[args.local_rank],
+                                                          output_device=args.local_rank,
+                                                          find_unused_parameters=True)
 
     for epoch in range(200):
         print('-' * 94)
