@@ -30,7 +30,7 @@ In the data directory, run:
 	python preprocessed_data.py 
 
 
-### Model Training
+### Run main model
 
 To train the model, run in the method directory:
 
@@ -43,7 +43,11 @@ After the training finished, you can specify the check point directory in `main.
 
 Or you can load trained models and run `python main.py` .
 
-### Trained models
+To use modified version of the original model, specify corresponding parameters after `python main.py`.
+
+For example, to use pretrained model with 512-dimensional latent space, use `python main.py --latent_size 512 --transformer_model_size 512`.
+
+### Pretrained models indexes
 
 Yelp dataset:
 
