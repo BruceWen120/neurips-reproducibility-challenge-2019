@@ -2,3 +2,4 @@ data/* linguist-vendored
 *.* linguist-language=Python
 method/mymodel-yelp/save/1576119110/ae_model_params.pkl filter=lfs diff=lfs merge=lfs -text
 method/mymodel-yelp/save/1576119110/dis_model_params.pkl filter=lfs diff=lfs merge=lfs -text
+method/mymodel-yelp/save/1576109322/ae_model_params.pkl filter=lfs diff=lfs merge=lfs -text
