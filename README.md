@@ -18,10 +18,10 @@ In this work, we present a controllable unsupervised text attribute transfer fra
 <pre><code>Root
 ├─data/*        Store datasets
 ├─method/*      Store the source code and saved models
-├─fasttext/*		Fasttext classifier for evaluation
-├─results/*			Generated sentences and evaluation results
-├─srilm/*				Language model for evaluation
-└─outputs/*     Store evaluation scripts
+├─fasttext/*	Fasttext classifier for evaluation
+├─results/*	    Generated sentences and evaluation results
+├─srilm/*	    Language model for evaluation
+└─outputs/*	    Store evaluation scripts
 </code></pre>
 
 ###  Data Preprocessing
