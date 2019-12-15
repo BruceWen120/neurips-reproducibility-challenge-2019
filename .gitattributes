@@ -4,3 +4,4 @@ method/mymodel-yelp/save/1576119110/ae_model_params.pkl filter=lfs diff=lfs merg
 method/mymodel-yelp/save/1576119110/dis_model_params.pkl filter=lfs diff=lfs merge=lfs -text
 method/mymodel-yelp/save/1576109322/ae_model_params.pkl filter=lfs diff=lfs merge=lfs -text
 method/mymodel-yelp/save/1576344354/ae_model_params.pkl filter=lfs diff=lfs merge=lfs -text
+method/mymodel-captions/save/1576006739/ae_model_params.pkl filter=lfs diff=lfs merge=lfs -text
