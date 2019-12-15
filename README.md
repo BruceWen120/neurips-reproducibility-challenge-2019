@@ -62,19 +62,3 @@ Caption dataset:
 ## LICENSE
 
 [MIT](./LICENSE)
-
-## Citation
-
-If you find our codes is helpful for your research, please kindly consider citing our paper:
-
-<pre><code>@inproceedings{DBLP:journals/corr/abs-1905-12926,
-  author    = {Ke Wang and Hang Hua and Xiaojun Wan},
-  title     = {Controllable Unsupervised Text Attribute Transfer via Editing Entangled Latent Representation},
-  booktitle = {NeurIPS},
-  year      = {2019}
-}
-</code></pre>
-
-
-
-
