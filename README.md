@@ -10,8 +10,8 @@ In this work, we present a controllable unsupervised text attribute transfer fra
 ## Documents
 
 ### Dependencies
-	Python 3.6
-	PyTorch 0.4
+	Python 3.7
+	PyTorch 1.2.0
 
 ### Directory description
 
