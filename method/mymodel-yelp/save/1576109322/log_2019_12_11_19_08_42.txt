@@ -1,0 +1,18 @@
+[2019-12-11 19:08:42]: Path: save/1576109322/ is created
+[2019-12-11 19:08:54]: Start train process.
+[2019-12-11 19:08:55]: | epoch   0 |     0/  873 batches | rec loss 7.9767 | dis loss 0.7103 |
+[2019-12-11 19:09:21]: | epoch   0 |   200/  873 batches | rec loss 4.1915 | dis loss 0.5544 |
+[2019-12-11 19:09:48]: | epoch   0 |   400/  873 batches | rec loss 2.7527 | dis loss 0.3662 |
+[2019-12-11 19:10:14]: | epoch   0 |   600/  873 batches | rec loss 2.0445 | dis loss 0.3729 |
+[2019-12-11 19:10:41]: | epoch   0 |   800/  873 batches | rec loss 1.5528 | dis loss 0.3395 |
+[2019-12-11 19:10:52]: | end of epoch   0 | time: 118.23s |
+[2019-12-11 19:11:07]: | epoch   1 |     0/  873 batches | rec loss 1.5031 | dis loss 0.3124 |
+[2019-12-11 19:11:34]: | epoch   1 |   200/  873 batches | rec loss 1.1853 | dis loss 0.3010 |
+[2019-12-11 19:12:01]: | epoch   1 |   400/  873 batches | rec loss 0.9611 | dis loss 0.2320 |
+[2019-12-11 19:12:28]: | epoch   1 |   600/  873 batches | rec loss 0.8655 | dis loss 0.2873 |
+[2019-12-11 19:12:55]: | epoch   1 |   800/  873 batches | rec loss 0.7192 | dis loss 0.3314 |
+[2019-12-11 19:13:06]: | end of epoch   1 | time: 118.83s |
+[2019-12-11 19:13:09]: | epoch   2 |     0/  873 batches | rec loss 0.7481 | dis loss 0.2764 |
+[2019-12-11 19:13:36]: | epoch   2 |   200/  873 batches | rec loss 0.6748 | dis loss 0.2780 |
+[2019-12-11 19:14:03]: | epoch   2 |   400/  873 batches | rec loss 0.5739 | dis loss 0.2100 |
+[2019-12-11 19:14:29]: | epoch   2 |   600/  873 batches | rec loss 0.5142 | dis loss 0.2633 |
