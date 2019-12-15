@@ -20,7 +20,7 @@ from data import prepare_data, non_pair_data_loader, get_cuda, pad_batch_seuqenc
     to_var, calc_bleu, load_human_answer
 
 os.environ['CUDA_LAUNCH_BLOCKING'] = "1"
-# os.environ["CUDA_VISIBLE_DEVICES"] = "0"
+# os.environ["CUDA_VISIBLE_DEVICES"] = "6,7,8"
 
 ######################################################################################
 #  Environmental parameters
@@ -56,10 +56,10 @@ parser.add_argument('--label_size', type=int, default=1)
 
 
 args = parser.parse_args()
-args.if_load_from_checkpoint = False
-#
-# args.if_load_from_checkpoint = True
-# args.checkpoint_name = "1557891887"
+# args.if_load_from_checkpoint = False
+
+args.if_load_from_checkpoint = True
+args.checkpoint_name = "1576006739"
 
 
 ######################################################################################
@@ -240,9 +240,10 @@ def eval_iters(ae_model, dis_model):
             target = get_cuda(torch.tensor([[0.0]], dtype=torch.float))
         print("target_labels", target)
 
+        add_output("\ngold: " + id2text_sentence(gold_ans[it], args.id_to_word))
         modify_text = fgim_attack(dis_model, latent, target, ae_model, args.max_sequence_length, args.id_bos,
-                                        id2text_sentence, args.id_to_word, gold_ans[it])
-        add_output(modify_text)
+                                        id2text_sentence, args.id_to_word, gold_ans[it], args.output_file)
+        # add_output(modify_text)
     return
 
 
@@ -262,10 +263,10 @@ if __name__ == '__main__':
         # Load models' params from checkpoint
         ae_model.load_state_dict(torch.load(args.current_save_path + 'ae_model_params.pkl'))
         dis_model.load_state_dict(torch.load(args.current_save_path + 'dis_model_params.pkl'))
+        eval_iters(ae_model, dis_model)
     else:
         train_iters(ae_model, dis_model)
 
-    eval_iters(ae_model, dis_model)
 
     print("Done!")
 

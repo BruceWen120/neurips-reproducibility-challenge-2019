@@ -40,7 +40,7 @@ def buid_dict_file():
     print("Get word_dict success: %d words" % len(word_to_id))
     # write word_to_id to file
     word_dict_list = sorted(word_to_id.items(), key=lambda d: d[1], reverse=True)
-    with open(dict_file, 'w') as f:
+    with open(dict_file, 'w+') as f:
         f.write("<PAD>\n")
         f.write("<UNK>\n")
         f.write("<BOS>\n")

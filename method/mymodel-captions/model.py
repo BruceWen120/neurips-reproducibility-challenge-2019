@@ -8,6 +8,11 @@ import torch.nn.utils.rnn as rnn_utils
 from data import get_cuda, to_var, calc_bleu
 import numpy as np
 
+def add_output(output_file, ss):
+    with open(output_file, 'a') as f:
+        f.write(str(ss) + '\n')
+    return
+
 
 def clones(module, N):
     """Produce N identical layers."""
@@ -79,8 +84,8 @@ class PositionalEncoding(nn.Module):
 
         # Compute the positional encodings once in log space.
         pe = torch.zeros(max_len, d_model)
-        position = torch.arange(0, max_len).unsqueeze(1)
-        div_term = torch.exp(torch.arange(0, d_model, 2) *
+        position = torch.arange(0, max_len, dtype=torch.float).unsqueeze(1)
+        div_term = torch.exp(torch.arange(0, d_model, 2, dtype=torch.float) *
                              -(math.log(10000.0) / d_model))
         pe[:, 0::2] = torch.sin(position * div_term)
         pe[:, 1::2] = torch.cos(position * div_term)
@@ -146,6 +151,30 @@ class Encoder(nn.Module):
             x = layer(x, mask)
         return self.norm(x)
 
+# change encoder to lstm
+class AbLSTMEncoder(nn.Module):
+    def __init__(self, size, hidden_size, dropout):
+        super(AbLSTMEncoder, self).__init__()
+        self.lstm = nn.LSTM(
+            input_size=size, 
+            hidden_size=hidden_size, 
+            dropout=dropout, 
+            bidirectional=False
+                )
+
+    def forward(self, x):
+        out, hidden = self.lstm(x)
+        return out
+
+# change encoder to attention
+class AbAttEncoder(nn.Module):
+    def __init__(self, size, self_attn):
+        super(AbAttEncoder, self).__init__()
+        self.self_attn = self_attn
+
+    def forward(self, x, mask):
+        return self.self_attn(x, x, x, mask)
+
 
 class EncoderLayer(nn.Module):
     """Encoder is made up of self-attn and feed forward (defined below)"""
@@ -175,6 +204,29 @@ class Decoder(nn.Module):
             x = layer(x, memory, src_mask, tgt_mask)
         return self.norm(x)
 
+# change encoder decoder to lstm
+class AbLSTMDecoder(nn.Module):
+    def __init__(self, size, hidden_size, dropout):
+        super(AbLSTMDecoder, self).__init__()
+        self.lstm = nn.LSTM(
+            input_size=size, 
+            hidden_size=hidden_size, 
+            dropout=dropout, 
+            bidirectional=False
+                )
+
+    def forward(self, x):
+        out, hidden = self.lstm(x)
+        return out
+
+# change encoder decoder to attention
+class AbAttDecoder(nn.Module):
+    def __init__(self, size, self_attn):
+        super(AbAttDecoder, self).__init__()
+        self.self_attn = self_attn
+
+    def forward(self, x, memory, src_mask):
+        return self.self_attn(x, memory, memory, src_mask)
 
 class DecoderLayer(nn.Module):
     """Decoder is made of self-attn, src-attn, and feed forward (defined below)"""
@@ -230,6 +282,7 @@ class EncoderDecoder(nn.Module):
         Take in and process masked src and target sequences.
         """
         latent = self.encode(src, src_mask)  # (batch_size, max_src_seq, d_model)
+        # latent = self.encode(src)
         latent = self.sigmoid(latent)
         # memory = self.position_layer(memory)
 
@@ -241,6 +294,8 @@ class EncoderDecoder(nn.Module):
         # memory = self.latent2memory(latent)  # (batch_size, max_src_seq, d_model)
 
         logit = self.decode(latent.unsqueeze(1), tgt, tgt_mask)  # (batch_size, max_tgt_seq, d_model)
+        # logit = self.decode(latent.unsqueeze(1), tgt)   # attn
+        # logit = self.decode(latent.unsqueeze(1), tgt)    # lstm
         prob = self.generator(logit)  # (batch_size, max_seq, vocab_size)
         return latent, prob
 
@@ -248,6 +303,8 @@ class EncoderDecoder(nn.Module):
 
     def encode(self, src, src_mask):
         return self.encoder(self.src_embed(src), src_mask)
+    # def encode(self, src):
+    #     return self.encoder(self.src_embed(src))
 
     def decode(self, memory, tgt, tgt_mask):
         # memory: (batch_size, 1, d_model)
@@ -255,6 +312,14 @@ class EncoderDecoder(nn.Module):
         # print("src_mask here", src_mask)
         # print("src_mask", src_mask.size())
         return self.decoder(self.tgt_embed(tgt), memory, src_mask, tgt_mask)
+
+    # def decode(self, memory, tgt):
+    #     # memory: (batch_size, 1, d_model)
+    #     src_mask = get_cuda(torch.ones(memory.size(0), 1, 1).long())
+    #     # print("src_mask here", src_mask)
+    #     # print("src_mask", src_mask.size())
+    #     return self.decoder(self.tgt_embed(tgt), memory, src_mask)  # att decoder
+    #     # return self.decoder(self.tgt_embed(tgt))
 
     def greedy_decode(self, latent, max_len, start_id):
         '''
@@ -272,6 +337,8 @@ class EncoderDecoder(nn.Module):
             # print("ys", ys.size())  # (batch_size, i)
             # print("tgt_mask", subsequent_mask(ys.size(1)).size())  # (1, i, i)
             out = self.decode(latent.unsqueeze(1), to_var(ys), to_var(subsequent_mask(ys.size(1)).long()))
+            # out = self.decode(latent.unsqueeze(1), to_var(ys)) # this is lstm
+            # out = self.decode(latent.unsqueeze(1), to_var(ys))  # this is attn
             prob = self.generator(out[:, -1])
             # print("prob", prob.size())  # (batch_size, vocab_size)
             _, next_word = torch.max(prob, dim=1)
@@ -292,8 +359,12 @@ def make_model(d_vocab, N, d_model, latent_size, d_ff=1024, h=4, dropout=0.1):
     position = PositionalEncoding(d_model, dropout)
     share_embedding = Embeddings(d_model, d_vocab)
     model = EncoderDecoder(
+        # AbLSTMEncoder(d_model, d_model, dropout),
+        # AbAttEncoder(d_model, c(attn)),
         Encoder(EncoderLayer(d_model, c(attn), c(ff), dropout), N),
         Decoder(DecoderLayer(d_model, c(attn), c(attn), c(ff), dropout), N),
+        # AbLSTMDecoder(latent_size, d_model, dropout),
+        # AbAttDecoder(d_model, c(attn)),
         # nn.Sequential(Embeddings(d_model, d_vocab), c(position)),
         # nn.Sequential(Embeddings(d_model, d_vocab), c(position)),
         nn.Sequential(share_embedding, c(position)),
@@ -421,7 +492,7 @@ class Classifier(nn.Module):
 
 
 def fgim_attack(model, origin_data, target, ae_model, max_sequence_length, id_bos,
-                id2text_sentence, id_to_word, gold_ans):
+                id2text_sentence, id_to_word, gold_ans, output_file):
     """Fast Gradient Iterative Methods"""
 
     dis_criterion = nn.BCELoss(size_average=True)
@@ -432,6 +503,7 @@ def fgim_attack(model, origin_data, target, ae_model, max_sequence_length, id_bo
     for epsilon in [2.0, 3.0, 4.0, 5.0, 6.0, 7.0, 8.0]:
         it = 0
         data = origin_data
+        output_text = str(epsilon)
         while True:
             print("epsilon:", epsilon)
 
@@ -465,10 +537,12 @@ def fgim_attack(model, origin_data, target, ae_model, max_sequence_length, id_bo
                                                     start_id=id_bos)
             generator_text = id2text_sentence(generator_id[0], id_to_word)
             print("| It {:2d} | dis model pred {:5.4f} |".format(it, output[0].item()))
-            print(generator_text)
+            # print(generator_text)
             if it >= 5:
+                print(generator_text)
                 break
-    return
+        add_output(output_file, ": ".join([output_text, generator_text])) # save sentence
+    return generator_text
 
 
 

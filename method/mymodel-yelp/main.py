@@ -18,7 +18,7 @@ from model import make_model, Classifier, NoamOpt, LabelSmoothing, fgim_attack
 from data import prepare_data, non_pair_data_loader, get_cuda, pad_batch_seuqences, id2text_sentence,\
     to_var, calc_bleu, load_human_answer
 
-os.environ['CUDA_LAUNCH_BLOCKING'] = "1"
+# os.environ['CUDA_LAUNCH_BLOCKING'] = "1"
 # os.environ["CUDA_VISIBLE_DEVICES"] = "0"
 
 ######################################################################################
@@ -52,13 +52,14 @@ parser.add_argument('--word_dropout', type=float, default=1.0)
 parser.add_argument('--embedding_dropout', type=float, default=0.5)
 parser.add_argument('--learning_rate', type=float, default=0.001)
 parser.add_argument('--label_size', type=int, default=1)
+parser.add_argument('--local_rank', type=int, default=-1)
 
 
 args = parser.parse_args()
 
-# args.if_load_from_checkpoint = False
+args.if_load_from_checkpoint = False
 # args.if_load_from_checkpoint = True
-# args.checkpoint_name = "1557667911"
+# args.checkpoint_name = "1576263017"
 
 
 ######################################################################################
@@ -79,6 +80,10 @@ def add_output(ss):
         f.write(str(ss) + '\n')
     return
 
+def add_result(ss):
+    with open(args.eval_result_file, 'a') as f:
+        f.write(str(ss) + '\n')
+    return
 
 def preparation():
     # set model save path
@@ -90,6 +95,8 @@ def preparation():
     args.current_save_path = 'save/%s/' % timestamp
     args.log_file = args.current_save_path + time.strftime("log_%Y_%m_%d_%H_%M_%S.txt", time.localtime())
     args.output_file = args.current_save_path + time.strftime("output_%Y_%m_%d_%H_%M_%S.txt", time.localtime())
+    # path to save evaluation results like bleu score
+    args.eval_result_file = args.current_save_path + time.strftime("eval_%Y_%m_%d_%H_%M_%S.txt", time.localtime())
     print("create log file at path: %s" % args.log_file)
 
     if os.path.exists(args.current_save_path):
@@ -124,8 +131,8 @@ def train_iters(ae_model, dis_model):
     )
     train_data_loader.create_batches(args.train_file_list, args.train_label_list, if_shuffle=True)
     add_log("Start train process.")
-    ae_model.train()
-    dis_model.train()
+    # ae_model.train()
+    # dis_model.train()
 
     ae_optimizer = NoamOpt(ae_model.src_embed[0].d_model, 1, 2000,
                            torch.optim.Adam(ae_model.parameters(), lr=0, betas=(0.9, 0.98), eps=1e-9))
@@ -133,11 +140,15 @@ def train_iters(ae_model, dis_model):
 
     ae_criterion = get_cuda(LabelSmoothing(size=args.vocab_size, padding_idx=args.id_pad, smoothing=0.1))
     dis_criterion = nn.BCELoss(size_average=True)
+    ae_model = torch.nn.DataParallel(ae_model)
+    dis_model = torch.nn.DataParallel(dis_model)
 
     for epoch in range(200):
         print('-' * 94)
         epoch_start_time = time.time()
         for it in range(train_data_loader.num_batch):
+            ae_model.train()
+            dis_model.train()
             batch_sentences, tensor_labels, \
             tensor_src, tensor_src_mask, tensor_tgt, tensor_tgt_y, \
             tensor_tgt_mask, tensor_ntokens = train_data_loader.next_batch()
@@ -168,11 +179,11 @@ def train_iters(ae_model, dis_model):
                     '| epoch {:3d} | {:5d}/{:5d} batches | rec loss {:5.4f} | dis loss {:5.4f} |'.format(
                         epoch, it, train_data_loader.num_batch, loss_rec, loss_dis))
 
-                print(id2text_sentence(tensor_tgt_y[0], args.id_to_word))
-                generator_text = ae_model.greedy_decode(latent,
-                                                        max_len=args.max_sequence_length,
-                                                        start_id=args.id_bos)
-                print(id2text_sentence(generator_text[0], args.id_to_word))
+                # print(id2text_sentence(tensor_tgt_y[0], args.id_to_word))
+                # generator_text = ae_model.greedy_decode(latent,
+                #                                         max_len=args.max_sequence_length,
+                #                                         start_id=args.id_bos)
+                # print(id2text_sentence(generator_text[0], args.id_to_word))
 
         add_log(
             '| end of epoch {:3d} | time: {:5.2f}s |'.format(
@@ -203,9 +214,12 @@ def eval_iters(ae_model, dis_model):
 
 
     add_log("Start eval process.")
-    ae_model.eval()
-    dis_model.eval()
+    # ae_model.eval()
+    # dis_model.eval()
+
     for it in range(eval_data_loader.num_batch):
+        ae_model.eval()
+        dis_model.eval()
         batch_sentences, tensor_labels, \
         tensor_src, tensor_src_mask, tensor_tgt, tensor_tgt_y, \
         tensor_tgt_mask, tensor_ntokens = eval_data_loader.next_batch()
@@ -215,9 +229,14 @@ def eval_iters(ae_model, dis_model):
         print("origin_labels", tensor_labels)
 
         latent, out = ae_model.forward(tensor_src, tensor_tgt, tensor_src_mask, tensor_tgt_mask)
-        generator_text = ae_model.greedy_decode(latent,
-                                                max_len=args.max_sequence_length,
-                                                start_id=args.id_bos)
+        try:
+            generator_text = ae_model.greedy_decode(latent,
+                                                    max_len=args.max_sequence_length,
+                                                    start_id=args.id_bos)
+        except:
+            generator_text = ae_model.module.greedy_decode(latent,
+                                                    max_len=args.max_sequence_length,
+                                                    start_id=args.id_bos)
         print(id2text_sentence(generator_text[0], args.id_to_word))
 
         # Define target label
@@ -226,9 +245,13 @@ def eval_iters(ae_model, dis_model):
             target = get_cuda(torch.tensor([[0.0]], dtype=torch.float))
         print("target_labels", target)
 
+        # add_output("\ngold: " + id2text_sentence(gold_ans[it], args.id_to_word))
+        # modify_text = fgim_attack(dis_model, latent, target, ae_model, args.max_sequence_length, args.id_bos,
+        #                                 id2text_sentence, args.id_to_word, gold_ans[it], args.output_file)
+        add_output("\ngold: " + id2text_sentence(gold_ans[it], args.id_to_word))
         modify_text = fgim_attack(dis_model, latent, target, ae_model, args.max_sequence_length, args.id_bos,
-                                        id2text_sentence, args.id_to_word, gold_ans[it])
-        add_output(modify_text)
+                                        id2text_sentence, args.id_to_word, gold_ans[it], args.output_file)
+        # break
     return
 
 
@@ -246,12 +269,13 @@ if __name__ == '__main__':
 
     if args.if_load_from_checkpoint:
         # Load models' params from checkpoint
+        ae_model = torch.nn.DataParallel(ae_model)
+        dis_model = torch.nn.DataParallel(dis_model)
         ae_model.load_state_dict(torch.load(args.current_save_path + 'ae_model_params.pkl'))
         dis_model.load_state_dict(torch.load(args.current_save_path + 'dis_model_params.pkl'))
+        eval_iters(ae_model, dis_model)
     else:
         train_iters(ae_model, dis_model)
-
-    eval_iters(ae_model, dis_model)
 
     print("Done!")
 

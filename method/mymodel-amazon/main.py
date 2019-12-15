@@ -20,7 +20,7 @@ from data import prepare_data, non_pair_data_loader, get_cuda, pad_batch_seuqenc
     id2text_sentence, to_var, calc_bleu
 
 os.environ['CUDA_LAUNCH_BLOCKING'] = "1"
-# os.environ["CUDA_VISIBLE_DEVICES"] = "0"
+os.environ["CUDA_VISIBLE_DEVICES"] = "6,7,8"
 
 ######################################################################################
 #  Environmental parameters
@@ -79,7 +79,10 @@ def add_output(ss):
         f.write(str(ss) + '\n')
     return
 
-
+def add_result(ss):
+    with open(args.eval_result_file, 'a') as f:
+        f.write(str(ss) + '\n')
+    return
 
 def preparation():
     # set model save path
@@ -229,6 +232,9 @@ def eval_iters(ae_model, dis_model):
         modify_text = fgim_attack(dis_model, latent, target, ae_model, args.max_sequence_length, args.id_bos,
                                         id2text_sentence, args.id_to_word, gold_ans[it])
         add_output(modify_text)
+        output_text = str(it) + ":\ngold: " + id2text_sentence(gold_ans[it], args.id_to_word) + "\nmodified: " + modify_text
+        add_output(output_text)
+        add_result(str(it) + ":\n" + str(calc_bleu(id2text_sentence(gold_ans[it], args.id_to_word), modify_text)))
     return
 
 if __name__ == '__main__':
