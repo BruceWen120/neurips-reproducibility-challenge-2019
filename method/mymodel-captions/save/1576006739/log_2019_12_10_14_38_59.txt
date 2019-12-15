@@ -1,0 +1,403 @@
+[2019-12-10 14:38:59]: Path: save/1576006739/ is created
+[2019-12-10 14:39:04]: Start train process.
+[2019-12-10 14:39:05]: | epoch   0 |     0/   25 batches | rec loss 7.4133 | dis loss 0.9436 |
+[2019-12-10 14:39:09]: | end of epoch   0 | time:  4.45s |
+[2019-12-10 14:39:10]: | epoch   1 |     0/   25 batches | rec loss 7.2460 | dis loss 0.7003 |
+[2019-12-10 14:39:14]: | end of epoch   1 | time:  4.08s |
+[2019-12-10 14:39:14]: | epoch   2 |     0/   25 batches | rec loss 6.8453 | dis loss 0.6940 |
+[2019-12-10 14:39:18]: | end of epoch   2 | time:  4.00s |
+[2019-12-10 14:39:19]: | epoch   3 |     0/   25 batches | rec loss 6.4122 | dis loss 0.6953 |
+[2019-12-10 14:39:23]: | end of epoch   3 | time:  4.07s |
+[2019-12-10 14:39:24]: | epoch   4 |     0/   25 batches | rec loss 5.9817 | dis loss 0.6935 |
+[2019-12-10 14:39:28]: | end of epoch   4 | time:  4.12s |
+[2019-12-10 14:39:29]: | epoch   5 |     0/   25 batches | rec loss 5.5268 | dis loss 0.6942 |
+[2019-12-10 14:39:33]: | end of epoch   5 | time:  3.98s |
+[2019-12-10 14:39:34]: | epoch   6 |     0/   25 batches | rec loss 5.0890 | dis loss 0.6956 |
+[2019-12-10 14:39:38]: | end of epoch   6 | time:  4.08s |
+[2019-12-10 14:39:39]: | epoch   7 |     0/   25 batches | rec loss 4.7192 | dis loss 0.6908 |
+[2019-12-10 14:39:43]: | end of epoch   7 | time:  3.93s |
+[2019-12-10 14:39:44]: | epoch   8 |     0/   25 batches | rec loss 4.4657 | dis loss 0.6887 |
+[2019-12-10 14:39:48]: | end of epoch   8 | time:  4.04s |
+[2019-12-10 14:39:50]: | epoch   9 |     0/   25 batches | rec loss 4.2479 | dis loss 0.6903 |
+[2019-12-10 14:39:54]: | end of epoch   9 | time:  4.14s |
+[2019-12-10 14:39:55]: | epoch  10 |     0/   25 batches | rec loss 4.0422 | dis loss 0.6893 |
+[2019-12-10 14:39:59]: | end of epoch  10 | time:  4.02s |
+[2019-12-10 14:40:00]: | epoch  11 |     0/   25 batches | rec loss 3.8375 | dis loss 0.6869 |
+[2019-12-10 14:40:04]: | end of epoch  11 | time:  3.90s |
+[2019-12-10 14:40:05]: | epoch  12 |     0/   25 batches | rec loss 3.6423 | dis loss 0.6877 |
+[2019-12-10 14:40:09]: | end of epoch  12 | time:  4.02s |
+[2019-12-10 14:40:10]: | epoch  13 |     0/   25 batches | rec loss 3.4552 | dis loss 0.6862 |
+[2019-12-10 14:40:14]: | end of epoch  13 | time:  4.03s |
+[2019-12-10 14:40:15]: | epoch  14 |     0/   25 batches | rec loss 3.2884 | dis loss 0.6865 |
+[2019-12-10 14:40:19]: | end of epoch  14 | time:  4.16s |
+[2019-12-10 14:40:20]: | epoch  15 |     0/   25 batches | rec loss 3.1525 | dis loss 0.6845 |
+[2019-12-10 14:40:24]: | end of epoch  15 | time:  3.98s |
+[2019-12-10 14:40:24]: | epoch  16 |     0/   25 batches | rec loss 2.9770 | dis loss 0.6840 |
+[2019-12-10 14:40:28]: | end of epoch  16 | time:  4.12s |
+[2019-12-10 14:40:29]: | epoch  17 |     0/   25 batches | rec loss 2.8474 | dis loss 0.6841 |
+[2019-12-10 14:40:33]: | end of epoch  17 | time:  4.09s |
+[2019-12-10 14:40:34]: | epoch  18 |     0/   25 batches | rec loss 2.7322 | dis loss 0.6808 |
+[2019-12-10 14:40:38]: | end of epoch  18 | time:  4.09s |
+[2019-12-10 14:40:39]: | epoch  19 |     0/   25 batches | rec loss 2.6074 | dis loss 0.6799 |
+[2019-12-10 14:40:43]: | end of epoch  19 | time:  4.09s |
+[2019-12-10 14:40:44]: | epoch  20 |     0/   25 batches | rec loss 2.5089 | dis loss 0.6810 |
+[2019-12-10 14:40:48]: | end of epoch  20 | time:  3.89s |
+[2019-12-10 14:40:49]: | epoch  21 |     0/   25 batches | rec loss 2.4320 | dis loss 0.6779 |
+[2019-12-10 14:40:53]: | end of epoch  21 | time:  4.13s |
+[2019-12-10 14:40:54]: | epoch  22 |     0/   25 batches | rec loss 2.3301 | dis loss 0.6749 |
+[2019-12-10 14:40:58]: | end of epoch  22 | time:  4.11s |
+[2019-12-10 14:40:59]: | epoch  23 |     0/   25 batches | rec loss 2.2328 | dis loss 0.6776 |
+[2019-12-10 14:41:03]: | end of epoch  23 | time:  4.10s |
+[2019-12-10 14:41:04]: | epoch  24 |     0/   25 batches | rec loss 2.1295 | dis loss 0.6732 |
+[2019-12-10 14:41:08]: | end of epoch  24 | time:  4.11s |
+[2019-12-10 14:41:09]: | epoch  25 |     0/   25 batches | rec loss 2.0542 | dis loss 0.6673 |
+[2019-12-10 14:41:13]: | end of epoch  25 | time:  4.04s |
+[2019-12-10 14:41:14]: | epoch  26 |     0/   25 batches | rec loss 1.9627 | dis loss 0.6689 |
+[2019-12-10 14:41:18]: | end of epoch  26 | time:  4.12s |
+[2019-12-10 14:41:19]: | epoch  27 |     0/   25 batches | rec loss 1.8785 | dis loss 0.6629 |
+[2019-12-10 14:41:23]: | end of epoch  27 | time:  4.09s |
+[2019-12-10 14:41:24]: | epoch  28 |     0/   25 batches | rec loss 1.8161 | dis loss 0.6586 |
+[2019-12-10 14:41:29]: | end of epoch  28 | time:  4.21s |
+[2019-12-10 14:41:29]: | epoch  29 |     0/   25 batches | rec loss 1.7653 | dis loss 0.6590 |
+[2019-12-10 14:41:33]: | end of epoch  29 | time:  4.06s |
+[2019-12-10 14:41:34]: | epoch  30 |     0/   25 batches | rec loss 1.6589 | dis loss 0.6659 |
+[2019-12-10 14:41:38]: | end of epoch  30 | time:  4.09s |
+[2019-12-10 14:41:39]: | epoch  31 |     0/   25 batches | rec loss 1.6063 | dis loss 0.6513 |
+[2019-12-10 14:41:43]: | end of epoch  31 | time:  4.08s |
+[2019-12-10 14:41:44]: | epoch  32 |     0/   25 batches | rec loss 1.5166 | dis loss 0.6443 |
+[2019-12-10 14:41:48]: | end of epoch  32 | time:  4.08s |
+[2019-12-10 14:41:49]: | epoch  33 |     0/   25 batches | rec loss 1.4749 | dis loss 0.6506 |
+[2019-12-10 14:41:53]: | end of epoch  33 | time:  4.17s |
+[2019-12-10 14:41:54]: | epoch  34 |     0/   25 batches | rec loss 1.3948 | dis loss 0.6513 |
+[2019-12-10 14:41:58]: | end of epoch  34 | time:  3.94s |
+[2019-12-10 14:41:59]: | epoch  35 |     0/   25 batches | rec loss 1.3572 | dis loss 0.6309 |
+[2019-12-10 14:42:03]: | end of epoch  35 | time:  4.06s |
+[2019-12-10 14:42:04]: | epoch  36 |     0/   25 batches | rec loss 1.2888 | dis loss 0.6440 |
+[2019-12-10 14:42:08]: | end of epoch  36 | time:  4.01s |
+[2019-12-10 14:42:09]: | epoch  37 |     0/   25 batches | rec loss 1.2346 | dis loss 0.6409 |
+[2019-12-10 14:42:13]: | end of epoch  37 | time:  4.09s |
+[2019-12-10 14:42:14]: | epoch  38 |     0/   25 batches | rec loss 1.2078 | dis loss 0.6406 |
+[2019-12-10 14:42:18]: | end of epoch  38 | time:  4.00s |
+[2019-12-10 14:42:19]: | epoch  39 |     0/   25 batches | rec loss 1.1395 | dis loss 0.6335 |
+[2019-12-10 14:42:23]: | end of epoch  39 | time:  4.10s |
+[2019-12-10 14:42:24]: | epoch  40 |     0/   25 batches | rec loss 1.0740 | dis loss 0.6289 |
+[2019-12-10 14:42:28]: | end of epoch  40 | time:  4.09s |
+[2019-12-10 14:42:29]: | epoch  41 |     0/   25 batches | rec loss 1.0563 | dis loss 0.6223 |
+[2019-12-10 14:42:33]: | end of epoch  41 | time:  4.00s |
+[2019-12-10 14:42:34]: | epoch  42 |     0/   25 batches | rec loss 0.9961 | dis loss 0.6295 |
+[2019-12-10 14:42:37]: | end of epoch  42 | time:  3.91s |
+[2019-12-10 14:42:38]: | epoch  43 |     0/   25 batches | rec loss 0.9615 | dis loss 0.6357 |
+[2019-12-10 14:42:42]: | end of epoch  43 | time:  4.08s |
+[2019-12-10 14:42:43]: | epoch  44 |     0/   25 batches | rec loss 0.9027 | dis loss 0.6212 |
+[2019-12-10 14:42:47]: | end of epoch  44 | time:  4.09s |
+[2019-12-10 14:42:48]: | epoch  45 |     0/   25 batches | rec loss 0.8982 | dis loss 0.6257 |
+[2019-12-10 14:42:52]: | end of epoch  45 | time:  4.13s |
+[2019-12-10 14:42:53]: | epoch  46 |     0/   25 batches | rec loss 0.8710 | dis loss 0.6177 |
+[2019-12-10 14:42:57]: | end of epoch  46 | time:  4.08s |
+[2019-12-10 14:42:58]: | epoch  47 |     0/   25 batches | rec loss 0.8151 | dis loss 0.6232 |
+[2019-12-10 14:43:02]: | end of epoch  47 | time:  4.01s |
+[2019-12-10 14:43:03]: | epoch  48 |     0/   25 batches | rec loss 0.7897 | dis loss 0.6265 |
+[2019-12-10 14:43:07]: | end of epoch  48 | time:  3.90s |
+[2019-12-10 14:43:08]: | epoch  49 |     0/   25 batches | rec loss 0.7649 | dis loss 0.6264 |
+[2019-12-10 14:43:11]: | end of epoch  49 | time:  4.00s |
+[2019-12-10 14:43:13]: | epoch  50 |     0/   25 batches | rec loss 0.7455 | dis loss 0.6307 |
+[2019-12-10 14:43:17]: | end of epoch  50 | time:  4.08s |
+[2019-12-10 14:43:17]: | epoch  51 |     0/   25 batches | rec loss 0.7219 | dis loss 0.6227 |
+[2019-12-10 14:43:21]: | end of epoch  51 | time:  4.00s |
+[2019-12-10 14:43:22]: | epoch  52 |     0/   25 batches | rec loss 0.6883 | dis loss 0.6228 |
+[2019-12-10 14:43:26]: | end of epoch  52 | time:  4.09s |
+[2019-12-10 14:43:27]: | epoch  53 |     0/   25 batches | rec loss 0.6874 | dis loss 0.6186 |
+[2019-12-10 14:43:31]: | end of epoch  53 | time:  4.09s |
+[2019-12-10 14:43:32]: | epoch  54 |     0/   25 batches | rec loss 0.6641 | dis loss 0.6222 |
+[2019-12-10 14:43:36]: | end of epoch  54 | time:  4.11s |
+[2019-12-10 14:43:37]: | epoch  55 |     0/   25 batches | rec loss 0.6356 | dis loss 0.6248 |
+[2019-12-10 14:43:41]: | end of epoch  55 | time:  4.13s |
+[2019-12-10 14:43:42]: | epoch  56 |     0/   25 batches | rec loss 0.6349 | dis loss 0.6137 |
+[2019-12-10 14:43:46]: | end of epoch  56 | time:  4.02s |
+[2019-12-10 14:43:47]: | epoch  57 |     0/   25 batches | rec loss 0.6307 | dis loss 0.6253 |
+[2019-12-10 14:43:51]: | end of epoch  57 | time:  4.03s |
+[2019-12-10 14:43:52]: | epoch  58 |     0/   25 batches | rec loss 0.6063 | dis loss 0.6129 |
+[2019-12-10 14:43:56]: | end of epoch  58 | time:  4.14s |
+[2019-12-10 14:43:57]: | epoch  59 |     0/   25 batches | rec loss 0.5604 | dis loss 0.6052 |
+[2019-12-10 14:44:00]: | end of epoch  59 | time:  4.00s |
+[2019-12-10 14:44:02]: | epoch  60 |     0/   25 batches | rec loss 0.5546 | dis loss 0.6135 |
+[2019-12-10 14:44:05]: | end of epoch  60 | time:  4.06s |
+[2019-12-10 14:44:06]: | epoch  61 |     0/   25 batches | rec loss 0.5350 | dis loss 0.6156 |
+[2019-12-10 14:44:10]: | end of epoch  61 | time:  4.00s |
+[2019-12-10 14:44:11]: | epoch  62 |     0/   25 batches | rec loss 0.5190 | dis loss 0.6170 |
+[2019-12-10 14:44:15]: | end of epoch  62 | time:  4.10s |
+[2019-12-10 14:44:16]: | epoch  63 |     0/   25 batches | rec loss 0.5523 | dis loss 0.6205 |
+[2019-12-10 14:44:20]: | end of epoch  63 | time:  4.12s |
+[2019-12-10 14:44:21]: | epoch  64 |     0/   25 batches | rec loss 0.5247 | dis loss 0.6128 |
+[2019-12-10 14:44:25]: | end of epoch  64 | time:  4.09s |
+[2019-12-10 14:44:26]: | epoch  65 |     0/   25 batches | rec loss 0.5021 | dis loss 0.6091 |
+[2019-12-10 14:44:30]: | end of epoch  65 | time:  4.10s |
+[2019-12-10 14:44:31]: | epoch  66 |     0/   25 batches | rec loss 0.4896 | dis loss 0.6260 |
+[2019-12-10 14:44:35]: | end of epoch  66 | time:  4.14s |
+[2019-12-10 14:44:36]: | epoch  67 |     0/   25 batches | rec loss 0.4874 | dis loss 0.6052 |
+[2019-12-10 14:44:40]: | end of epoch  67 | time:  4.13s |
+[2019-12-10 14:44:41]: | epoch  68 |     0/   25 batches | rec loss 0.4694 | dis loss 0.6296 |
+[2019-12-10 14:44:45]: | end of epoch  68 | time:  4.14s |
+[2019-12-10 14:44:46]: | epoch  69 |     0/   25 batches | rec loss 0.4647 | dis loss 0.6071 |
+[2019-12-10 14:44:50]: | end of epoch  69 | time:  4.10s |
+[2019-12-10 14:44:51]: | epoch  70 |     0/   25 batches | rec loss 0.4580 | dis loss 0.6056 |
+[2019-12-10 14:44:55]: | end of epoch  70 | time:  4.14s |
+[2019-12-10 14:44:56]: | epoch  71 |     0/   25 batches | rec loss 0.4704 | dis loss 0.6111 |
+[2019-12-10 14:45:00]: | end of epoch  71 | time:  4.10s |
+[2019-12-10 14:45:01]: | epoch  72 |     0/   25 batches | rec loss 0.4320 | dis loss 0.6044 |
+[2019-12-10 14:45:05]: | end of epoch  72 | time:  4.13s |
+[2019-12-10 14:45:06]: | epoch  73 |     0/   25 batches | rec loss 0.4071 | dis loss 0.6058 |
+[2019-12-10 14:45:10]: | end of epoch  73 | time:  4.07s |
+[2019-12-10 14:45:11]: | epoch  74 |     0/   25 batches | rec loss 0.4266 | dis loss 0.6093 |
+[2019-12-10 14:45:15]: | end of epoch  74 | time:  4.13s |
+[2019-12-10 14:45:16]: | epoch  75 |     0/   25 batches | rec loss 0.4338 | dis loss 0.5926 |
+[2019-12-10 14:45:20]: | end of epoch  75 | time:  4.05s |
+[2019-12-10 14:45:21]: | epoch  76 |     0/   25 batches | rec loss 0.4357 | dis loss 0.5954 |
+[2019-12-10 14:45:25]: | end of epoch  76 | time:  4.12s |
+[2019-12-10 14:45:26]: | epoch  77 |     0/   25 batches | rec loss 0.4188 | dis loss 0.6123 |
+[2019-12-10 14:45:30]: | end of epoch  77 | time:  4.14s |
+[2019-12-10 14:45:31]: | epoch  78 |     0/   25 batches | rec loss 0.4049 | dis loss 0.6020 |
+[2019-12-10 14:45:35]: | end of epoch  78 | time:  3.99s |
+[2019-12-10 14:45:36]: | epoch  79 |     0/   25 batches | rec loss 0.3928 | dis loss 0.5933 |
+[2019-12-10 14:45:40]: | end of epoch  79 | time:  4.13s |
+[2019-12-10 14:45:41]: | epoch  80 |     0/   25 batches | rec loss 0.3935 | dis loss 0.5956 |
+[2019-12-10 14:45:45]: | end of epoch  80 | time:  4.03s |
+[2019-12-10 14:45:46]: | epoch  81 |     0/   25 batches | rec loss 0.3736 | dis loss 0.6035 |
+[2019-12-10 14:45:50]: | end of epoch  81 | time:  4.03s |
+[2019-12-10 14:45:50]: | epoch  82 |     0/   25 batches | rec loss 0.3725 | dis loss 0.6077 |
+[2019-12-10 14:45:55]: | end of epoch  82 | time:  4.18s |
+[2019-12-10 14:45:55]: | epoch  83 |     0/   25 batches | rec loss 0.3738 | dis loss 0.5995 |
+[2019-12-10 14:45:59]: | end of epoch  83 | time:  3.91s |
+[2019-12-10 14:46:00]: | epoch  84 |     0/   25 batches | rec loss 0.3820 | dis loss 0.6096 |
+[2019-12-10 14:46:04]: | end of epoch  84 | time:  4.08s |
+[2019-12-10 14:46:05]: | epoch  85 |     0/   25 batches | rec loss 0.3626 | dis loss 0.5925 |
+[2019-12-10 14:46:09]: | end of epoch  85 | time:  4.12s |
+[2019-12-10 14:46:10]: | epoch  86 |     0/   25 batches | rec loss 0.3725 | dis loss 0.5906 |
+[2019-12-10 14:46:14]: | end of epoch  86 | time:  4.06s |
+[2019-12-10 14:46:15]: | epoch  87 |     0/   25 batches | rec loss 0.3512 | dis loss 0.6003 |
+[2019-12-10 14:46:19]: | end of epoch  87 | time:  4.21s |
+[2019-12-10 14:46:20]: | epoch  88 |     0/   25 batches | rec loss 0.3416 | dis loss 0.5968 |
+[2019-12-10 14:46:24]: | end of epoch  88 | time:  4.14s |
+[2019-12-10 14:46:25]: | epoch  89 |     0/   25 batches | rec loss 0.3463 | dis loss 0.6054 |
+[2019-12-10 14:46:29]: | end of epoch  89 | time:  4.11s |
+[2019-12-10 14:46:30]: | epoch  90 |     0/   25 batches | rec loss 0.3215 | dis loss 0.5909 |
+[2019-12-10 14:46:34]: | end of epoch  90 | time:  4.11s |
+[2019-12-10 14:46:35]: | epoch  91 |     0/   25 batches | rec loss 0.3240 | dis loss 0.5991 |
+[2019-12-10 14:46:39]: | end of epoch  91 | time:  4.08s |
+[2019-12-10 14:46:40]: | epoch  92 |     0/   25 batches | rec loss 0.3105 | dis loss 0.5958 |
+[2019-12-10 14:46:44]: | end of epoch  92 | time:  4.05s |
+[2019-12-10 14:46:44]: | epoch  93 |     0/   25 batches | rec loss 0.3226 | dis loss 0.5921 |
+[2019-12-10 14:46:48]: | end of epoch  93 | time:  4.04s |
+[2019-12-10 14:46:49]: | epoch  94 |     0/   25 batches | rec loss 0.3062 | dis loss 0.5881 |
+[2019-12-10 14:46:53]: | end of epoch  94 | time:  4.05s |
+[2019-12-10 14:46:54]: | epoch  95 |     0/   25 batches | rec loss 0.3144 | dis loss 0.6084 |
+[2019-12-10 14:46:58]: | end of epoch  95 | time:  3.98s |
+[2019-12-10 14:46:59]: | epoch  96 |     0/   25 batches | rec loss 0.3071 | dis loss 0.5955 |
+[2019-12-10 14:47:03]: | end of epoch  96 | time:  4.11s |
+[2019-12-10 14:47:04]: | epoch  97 |     0/   25 batches | rec loss 0.2921 | dis loss 0.5966 |
+[2019-12-10 14:47:08]: | end of epoch  97 | time:  4.13s |
+[2019-12-10 14:47:09]: | epoch  98 |     0/   25 batches | rec loss 0.3087 | dis loss 0.5900 |
+[2019-12-10 14:47:13]: | end of epoch  98 | time:  4.08s |
+[2019-12-10 14:47:14]: | epoch  99 |     0/   25 batches | rec loss 0.2884 | dis loss 0.5902 |
+[2019-12-10 14:47:18]: | end of epoch  99 | time:  3.99s |
+[2019-12-10 14:47:18]: | epoch 100 |     0/   25 batches | rec loss 0.2919 | dis loss 0.5876 |
+[2019-12-10 14:47:22]: | end of epoch 100 | time:  4.12s |
+[2019-12-10 14:47:23]: | epoch 101 |     0/   25 batches | rec loss 0.2922 | dis loss 0.5898 |
+[2019-12-10 14:47:27]: | end of epoch 101 | time:  4.13s |
+[2019-12-10 14:47:28]: | epoch 102 |     0/   25 batches | rec loss 0.2817 | dis loss 0.5844 |
+[2019-12-10 14:47:32]: | end of epoch 102 | time:  4.08s |
+[2019-12-10 14:47:33]: | epoch 103 |     0/   25 batches | rec loss 0.2702 | dis loss 0.5889 |
+[2019-12-10 14:47:37]: | end of epoch 103 | time:  4.12s |
+[2019-12-10 14:47:38]: | epoch 104 |     0/   25 batches | rec loss 0.2693 | dis loss 0.5831 |
+[2019-12-10 14:47:42]: | end of epoch 104 | time:  4.00s |
+[2019-12-10 14:47:43]: | epoch 105 |     0/   25 batches | rec loss 0.2705 | dis loss 0.5875 |
+[2019-12-10 14:47:47]: | end of epoch 105 | time:  4.10s |
+[2019-12-10 14:47:48]: | epoch 106 |     0/   25 batches | rec loss 0.2597 | dis loss 0.5844 |
+[2019-12-10 14:47:52]: | end of epoch 106 | time:  4.13s |
+[2019-12-10 14:47:53]: | epoch 107 |     0/   25 batches | rec loss 0.2585 | dis loss 0.5828 |
+[2019-12-10 14:47:57]: | end of epoch 107 | time:  4.20s |
+[2019-12-10 14:47:58]: | epoch 108 |     0/   25 batches | rec loss 0.2722 | dis loss 0.5854 |
+[2019-12-10 14:48:02]: | end of epoch 108 | time:  4.09s |
+[2019-12-10 14:48:03]: | epoch 109 |     0/   25 batches | rec loss 0.2536 | dis loss 0.5940 |
+[2019-12-10 14:48:07]: | end of epoch 109 | time:  4.11s |
+[2019-12-10 14:48:08]: | epoch 110 |     0/   25 batches | rec loss 0.2628 | dis loss 0.5889 |
+[2019-12-10 14:48:12]: | end of epoch 110 | time:  4.16s |
+[2019-12-10 14:48:13]: | epoch 111 |     0/   25 batches | rec loss 0.2605 | dis loss 0.5969 |
+[2019-12-10 14:48:17]: | end of epoch 111 | time:  3.92s |
+[2019-12-10 14:48:18]: | epoch 112 |     0/   25 batches | rec loss 0.2384 | dis loss 0.5870 |
+[2019-12-10 14:48:22]: | end of epoch 112 | time:  4.04s |
+[2019-12-10 14:48:23]: | epoch 113 |     0/   25 batches | rec loss 0.2422 | dis loss 0.5887 |
+[2019-12-10 14:48:27]: | end of epoch 113 | time:  4.16s |
+[2019-12-10 14:48:28]: | epoch 114 |     0/   25 batches | rec loss 0.2353 | dis loss 0.5885 |
+[2019-12-10 14:48:32]: | end of epoch 114 | time:  4.13s |
+[2019-12-10 14:48:33]: | epoch 115 |     0/   25 batches | rec loss 0.2482 | dis loss 0.5828 |
+[2019-12-10 14:48:37]: | end of epoch 115 | time:  4.07s |
+[2019-12-10 14:48:38]: | epoch 116 |     0/   25 batches | rec loss 0.2358 | dis loss 0.5873 |
+[2019-12-10 14:48:42]: | end of epoch 116 | time:  4.07s |
+[2019-12-10 14:48:43]: | epoch 117 |     0/   25 batches | rec loss 0.2448 | dis loss 0.5715 |
+[2019-12-10 14:48:47]: | end of epoch 117 | time:  3.96s |
+[2019-12-10 14:48:48]: | epoch 118 |     0/   25 batches | rec loss 0.2285 | dis loss 0.5751 |
+[2019-12-10 14:48:52]: | end of epoch 118 | time:  3.94s |
+[2019-12-10 14:48:53]: | epoch 119 |     0/   25 batches | rec loss 0.2304 | dis loss 0.5896 |
+[2019-12-10 14:48:57]: | end of epoch 119 | time:  4.14s |
+[2019-12-10 14:48:58]: | epoch 120 |     0/   25 batches | rec loss 0.2225 | dis loss 0.5670 |
+[2019-12-10 14:49:02]: | end of epoch 120 | time:  4.06s |
+[2019-12-10 14:49:03]: | epoch 121 |     0/   25 batches | rec loss 0.2188 | dis loss 0.5863 |
+[2019-12-10 14:49:07]: | end of epoch 121 | time:  4.09s |
+[2019-12-10 14:49:08]: | epoch 122 |     0/   25 batches | rec loss 0.2345 | dis loss 0.5756 |
+[2019-12-10 14:49:12]: | end of epoch 122 | time:  4.10s |
+[2019-12-10 14:49:13]: | epoch 123 |     0/   25 batches | rec loss 0.2251 | dis loss 0.5742 |
+[2019-12-10 14:49:17]: | end of epoch 123 | time:  4.11s |
+[2019-12-10 14:49:18]: | epoch 124 |     0/   25 batches | rec loss 0.2266 | dis loss 0.5746 |
+[2019-12-10 14:49:22]: | end of epoch 124 | time:  4.14s |
+[2019-12-10 14:49:23]: | epoch 125 |     0/   25 batches | rec loss 0.2158 | dis loss 0.5736 |
+[2019-12-10 14:49:27]: | end of epoch 125 | time:  4.12s |
+[2019-12-10 14:49:27]: | epoch 126 |     0/   25 batches | rec loss 0.2155 | dis loss 0.5736 |
+[2019-12-10 14:49:32]: | end of epoch 126 | time:  4.16s |
+[2019-12-10 14:49:32]: | epoch 127 |     0/   25 batches | rec loss 0.2244 | dis loss 0.5794 |
+[2019-12-10 14:49:36]: | end of epoch 127 | time:  4.22s |
+[2019-12-10 14:49:37]: | epoch 128 |     0/   25 batches | rec loss 0.2133 | dis loss 0.5716 |
+[2019-12-10 14:49:41]: | end of epoch 128 | time:  4.01s |
+[2019-12-10 14:49:42]: | epoch 129 |     0/   25 batches | rec loss 0.1992 | dis loss 0.5823 |
+[2019-12-10 14:49:46]: | end of epoch 129 | time:  4.12s |
+[2019-12-10 14:49:47]: | epoch 130 |     0/   25 batches | rec loss 0.2010 | dis loss 0.5767 |
+[2019-12-10 14:49:51]: | end of epoch 130 | time:  3.95s |
+[2019-12-10 14:49:52]: | epoch 131 |     0/   25 batches | rec loss 0.2030 | dis loss 0.5664 |
+[2019-12-10 14:49:56]: | end of epoch 131 | time:  4.11s |
+[2019-12-10 14:49:57]: | epoch 132 |     0/   25 batches | rec loss 0.2108 | dis loss 0.5713 |
+[2019-12-10 14:50:01]: | end of epoch 132 | time:  4.08s |
+[2019-12-10 14:50:02]: | epoch 133 |     0/   25 batches | rec loss 0.1977 | dis loss 0.5668 |
+[2019-12-10 14:50:06]: | end of epoch 133 | time:  4.05s |
+[2019-12-10 14:50:07]: | epoch 134 |     0/   25 batches | rec loss 0.2088 | dis loss 0.5801 |
+[2019-12-10 14:50:11]: | end of epoch 134 | time:  4.09s |
+[2019-12-10 14:50:13]: | epoch 135 |     0/   25 batches | rec loss 0.2037 | dis loss 0.5847 |
+[2019-12-10 14:50:17]: | end of epoch 135 | time:  3.96s |
+[2019-12-10 14:50:18]: | epoch 136 |     0/   25 batches | rec loss 0.1985 | dis loss 0.5704 |
+[2019-12-10 14:50:22]: | end of epoch 136 | time:  4.12s |
+[2019-12-10 14:50:22]: | epoch 137 |     0/   25 batches | rec loss 0.2030 | dis loss 0.5633 |
+[2019-12-10 14:50:26]: | end of epoch 137 | time:  4.04s |
+[2019-12-10 14:50:27]: | epoch 138 |     0/   25 batches | rec loss 0.2079 | dis loss 0.5706 |
+[2019-12-10 14:50:31]: | end of epoch 138 | time:  4.00s |
+[2019-12-10 14:50:32]: | epoch 139 |     0/   25 batches | rec loss 0.1927 | dis loss 0.5738 |
+[2019-12-10 14:50:36]: | end of epoch 139 | time:  4.19s |
+[2019-12-10 14:50:37]: | epoch 140 |     0/   25 batches | rec loss 0.1912 | dis loss 0.5638 |
+[2019-12-10 14:50:41]: | end of epoch 140 | time:  4.18s |
+[2019-12-10 14:50:42]: | epoch 141 |     0/   25 batches | rec loss 0.1950 | dis loss 0.5690 |
+[2019-12-10 14:50:46]: | end of epoch 141 | time:  3.97s |
+[2019-12-10 14:50:47]: | epoch 142 |     0/   25 batches | rec loss 0.1955 | dis loss 0.5703 |
+[2019-12-10 14:50:51]: | end of epoch 142 | time:  4.10s |
+[2019-12-10 14:50:52]: | epoch 143 |     0/   25 batches | rec loss 0.1844 | dis loss 0.5734 |
+[2019-12-10 14:50:56]: | end of epoch 143 | time:  4.07s |
+[2019-12-10 14:50:56]: | epoch 144 |     0/   25 batches | rec loss 0.1848 | dis loss 0.5600 |
+[2019-12-10 14:51:00]: | end of epoch 144 | time:  4.12s |
+[2019-12-10 14:51:01]: | epoch 145 |     0/   25 batches | rec loss 0.1782 | dis loss 0.5628 |
+[2019-12-10 14:51:05]: | end of epoch 145 | time:  3.99s |
+[2019-12-10 14:51:06]: | epoch 146 |     0/   25 batches | rec loss 0.1840 | dis loss 0.5682 |
+[2019-12-10 14:51:10]: | end of epoch 146 | time:  4.06s |
+[2019-12-10 14:51:11]: | epoch 147 |     0/   25 batches | rec loss 0.1858 | dis loss 0.5669 |
+[2019-12-10 14:51:15]: | end of epoch 147 | time:  4.09s |
+[2019-12-10 14:51:16]: | epoch 148 |     0/   25 batches | rec loss 0.1805 | dis loss 0.5630 |
+[2019-12-10 14:51:20]: | end of epoch 148 | time:  4.00s |
+[2019-12-10 14:51:20]: | epoch 149 |     0/   25 batches | rec loss 0.1777 | dis loss 0.5603 |
+[2019-12-10 14:51:24]: | end of epoch 149 | time:  4.05s |
+[2019-12-10 14:51:25]: | epoch 150 |     0/   25 batches | rec loss 0.1915 | dis loss 0.5771 |
+[2019-12-10 14:51:29]: | end of epoch 150 | time:  4.08s |
+[2019-12-10 14:51:30]: | epoch 151 |     0/   25 batches | rec loss 0.1797 | dis loss 0.5641 |
+[2019-12-10 14:51:34]: | end of epoch 151 | time:  4.08s |
+[2019-12-10 14:51:35]: | epoch 152 |     0/   25 batches | rec loss 0.1783 | dis loss 0.5554 |
+[2019-12-10 14:51:39]: | end of epoch 152 | time:  3.97s |
+[2019-12-10 14:51:40]: | epoch 153 |     0/   25 batches | rec loss 0.1774 | dis loss 0.5497 |
+[2019-12-10 14:51:44]: | end of epoch 153 | time:  4.10s |
+[2019-12-10 14:51:45]: | epoch 154 |     0/   25 batches | rec loss 0.1806 | dis loss 0.5632 |
+[2019-12-10 14:51:49]: | end of epoch 154 | time:  4.16s |
+[2019-12-10 14:51:50]: | epoch 155 |     0/   25 batches | rec loss 0.1748 | dis loss 0.5668 |
+[2019-12-10 14:51:53]: | end of epoch 155 | time:  4.01s |
+[2019-12-10 14:51:55]: | epoch 156 |     0/   25 batches | rec loss 0.1706 | dis loss 0.5569 |
+[2019-12-10 14:51:58]: | end of epoch 156 | time:  4.00s |
+[2019-12-10 14:51:59]: | epoch 157 |     0/   25 batches | rec loss 0.1667 | dis loss 0.5556 |
+[2019-12-10 14:52:03]: | end of epoch 157 | time:  3.99s |
+[2019-12-10 14:52:04]: | epoch 158 |     0/   25 batches | rec loss 0.1685 | dis loss 0.5660 |
+[2019-12-10 14:52:08]: | end of epoch 158 | time:  4.12s |
+[2019-12-10 14:52:09]: | epoch 159 |     0/   25 batches | rec loss 0.1710 | dis loss 0.5598 |
+[2019-12-10 14:52:13]: | end of epoch 159 | time:  4.09s |
+[2019-12-10 14:52:14]: | epoch 160 |     0/   25 batches | rec loss 0.1745 | dis loss 0.5562 |
+[2019-12-10 14:52:18]: | end of epoch 160 | time:  4.13s |
+[2019-12-10 14:52:19]: | epoch 161 |     0/   25 batches | rec loss 0.1783 | dis loss 0.5506 |
+[2019-12-10 14:52:23]: | end of epoch 161 | time:  4.07s |
+[2019-12-10 14:52:24]: | epoch 162 |     0/   25 batches | rec loss 0.1670 | dis loss 0.5558 |
+[2019-12-10 14:52:28]: | end of epoch 162 | time:  4.04s |
+[2019-12-10 14:52:28]: | epoch 163 |     0/   25 batches | rec loss 0.1706 | dis loss 0.5605 |
+[2019-12-10 14:52:32]: | end of epoch 163 | time:  4.11s |
+[2019-12-10 14:52:34]: | epoch 164 |     0/   25 batches | rec loss 0.1604 | dis loss 0.5602 |
+[2019-12-10 14:52:38]: | end of epoch 164 | time:  3.99s |
+[2019-12-10 14:52:39]: | epoch 165 |     0/   25 batches | rec loss 0.1656 | dis loss 0.5571 |
+[2019-12-10 14:52:43]: | end of epoch 165 | time:  4.06s |
+[2019-12-10 14:52:44]: | epoch 166 |     0/   25 batches | rec loss 0.1640 | dis loss 0.5692 |
+[2019-12-10 14:52:48]: | end of epoch 166 | time:  4.10s |
+[2019-12-10 14:52:49]: | epoch 167 |     0/   25 batches | rec loss 0.1622 | dis loss 0.5488 |
+[2019-12-10 14:52:53]: | end of epoch 167 | time:  4.17s |
+[2019-12-10 14:52:53]: | epoch 168 |     0/   25 batches | rec loss 0.1615 | dis loss 0.5567 |
+[2019-12-10 14:52:57]: | end of epoch 168 | time:  4.02s |
+[2019-12-10 14:52:58]: | epoch 169 |     0/   25 batches | rec loss 0.1614 | dis loss 0.5555 |
+[2019-12-10 14:53:02]: | end of epoch 169 | time:  4.18s |
+[2019-12-10 14:53:03]: | epoch 170 |     0/   25 batches | rec loss 0.1566 | dis loss 0.5538 |
+[2019-12-10 14:53:07]: | end of epoch 170 | time:  4.11s |
+[2019-12-10 14:53:08]: | epoch 171 |     0/   25 batches | rec loss 0.1668 | dis loss 0.5530 |
+[2019-12-10 14:53:12]: | end of epoch 171 | time:  4.10s |
+[2019-12-10 14:53:13]: | epoch 172 |     0/   25 batches | rec loss 0.1629 | dis loss 0.5495 |
+[2019-12-10 14:53:17]: | end of epoch 172 | time:  4.08s |
+[2019-12-10 14:53:18]: | epoch 173 |     0/   25 batches | rec loss 0.1654 | dis loss 0.5434 |
+[2019-12-10 14:53:22]: | end of epoch 173 | time:  4.08s |
+[2019-12-10 14:53:23]: | epoch 174 |     0/   25 batches | rec loss 0.1616 | dis loss 0.5503 |
+[2019-12-10 14:53:27]: | end of epoch 174 | time:  4.06s |
+[2019-12-10 14:53:28]: | epoch 175 |     0/   25 batches | rec loss 0.1612 | dis loss 0.5619 |
+[2019-12-10 14:53:32]: | end of epoch 175 | time:  4.11s |
+[2019-12-10 14:53:33]: | epoch 176 |     0/   25 batches | rec loss 0.1474 | dis loss 0.5568 |
+[2019-12-10 14:53:37]: | end of epoch 176 | time:  4.03s |
+[2019-12-10 14:53:38]: | epoch 177 |     0/   25 batches | rec loss 0.1544 | dis loss 0.5500 |
+[2019-12-10 14:53:41]: | end of epoch 177 | time:  3.85s |
+[2019-12-10 14:53:43]: | epoch 178 |     0/   25 batches | rec loss 0.1593 | dis loss 0.5686 |
+[2019-12-10 14:53:46]: | end of epoch 178 | time:  4.10s |
+[2019-12-10 14:53:47]: | epoch 179 |     0/   25 batches | rec loss 0.1499 | dis loss 0.5472 |
+[2019-12-10 14:53:51]: | end of epoch 179 | time:  4.06s |
+[2019-12-10 14:53:52]: | epoch 180 |     0/   25 batches | rec loss 0.1534 | dis loss 0.5654 |
+[2019-12-10 14:53:56]: | end of epoch 180 | time:  4.09s |
+[2019-12-10 14:53:57]: | epoch 181 |     0/   25 batches | rec loss 0.1464 | dis loss 0.5524 |
+[2019-12-10 14:54:01]: | end of epoch 181 | time:  4.03s |
+[2019-12-10 14:54:02]: | epoch 182 |     0/   25 batches | rec loss 0.1534 | dis loss 0.5486 |
+[2019-12-10 14:54:06]: | end of epoch 182 | time:  4.08s |
+[2019-12-10 14:54:07]: | epoch 183 |     0/   25 batches | rec loss 0.1535 | dis loss 0.5496 |
+[2019-12-10 14:54:10]: | end of epoch 183 | time:  4.09s |
+[2019-12-10 14:54:12]: | epoch 184 |     0/   25 batches | rec loss 0.1475 | dis loss 0.5497 |
+[2019-12-10 14:54:16]: | end of epoch 184 | time:  4.12s |
+[2019-12-10 14:54:17]: | epoch 185 |     0/   25 batches | rec loss 0.1463 | dis loss 0.5537 |
+[2019-12-10 14:54:20]: | end of epoch 185 | time:  4.04s |
+[2019-12-10 14:54:21]: | epoch 186 |     0/   25 batches | rec loss 0.1454 | dis loss 0.5613 |
+[2019-12-10 14:54:25]: | end of epoch 186 | time:  4.09s |
+[2019-12-10 14:54:26]: | epoch 187 |     0/   25 batches | rec loss 0.1544 | dis loss 0.5634 |
+[2019-12-10 14:54:30]: | end of epoch 187 | time:  4.10s |
+[2019-12-10 14:54:31]: | epoch 188 |     0/   25 batches | rec loss 0.1502 | dis loss 0.5557 |
+[2019-12-10 14:54:35]: | end of epoch 188 | time:  4.12s |
+[2019-12-10 14:54:36]: | epoch 189 |     0/   25 batches | rec loss 0.1488 | dis loss 0.5585 |
+[2019-12-10 14:54:40]: | end of epoch 189 | time:  4.02s |
+[2019-12-10 14:54:41]: | epoch 190 |     0/   25 batches | rec loss 0.1424 | dis loss 0.5605 |
+[2019-12-10 14:54:45]: | end of epoch 190 | time:  4.13s |
+[2019-12-10 14:54:45]: | epoch 191 |     0/   25 batches | rec loss 0.1420 | dis loss 0.5460 |
+[2019-12-10 14:54:49]: | end of epoch 191 | time:  3.94s |
+[2019-12-10 14:54:50]: | epoch 192 |     0/   25 batches | rec loss 0.1484 | dis loss 0.5452 |
+[2019-12-10 14:54:54]: | end of epoch 192 | time:  4.10s |
+[2019-12-10 14:54:55]: | epoch 193 |     0/   25 batches | rec loss 0.1413 | dis loss 0.5477 |
+[2019-12-10 14:54:59]: | end of epoch 193 | time:  3.88s |
+[2019-12-10 14:55:00]: | epoch 194 |     0/   25 batches | rec loss 0.1414 | dis loss 0.5490 |
+[2019-12-10 14:55:04]: | end of epoch 194 | time:  4.02s |
+[2019-12-10 14:55:04]: | epoch 195 |     0/   25 batches | rec loss 0.1423 | dis loss 0.5534 |
+[2019-12-10 14:55:08]: | end of epoch 195 | time:  4.13s |
+[2019-12-10 14:55:09]: | epoch 196 |     0/   25 batches | rec loss 0.1376 | dis loss 0.5465 |
+[2019-12-10 14:55:13]: | end of epoch 196 | time:  4.08s |
+[2019-12-10 14:55:14]: | epoch 197 |     0/   25 batches | rec loss 0.1466 | dis loss 0.5457 |
+[2019-12-10 14:55:18]: | end of epoch 197 | time:  4.06s |
+[2019-12-10 14:55:19]: | epoch 198 |     0/   25 batches | rec loss 0.1372 | dis loss 0.5427 |
+[2019-12-10 14:55:23]: | end of epoch 198 | time:  4.01s |
+[2019-12-10 14:55:24]: | epoch 199 |     0/   25 batches | rec loss 0.1393 | dis loss 0.5508 |
+[2019-12-10 14:55:28]: | end of epoch 199 | time:  4.09s |
+[2019-12-10 14:55:29]: Start eval process.
