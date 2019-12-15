@@ -1,8 +1,8 @@
-# Controllable Text Attribute Transfer
+# Ablation study for Neurips 2019 reproducibility challenge
 
-Code for the paper: `Controllable Unsupervised Text Attribute Transfer via Editing Entangled Latent Representation`[(Arxiv:1905.12926)](https://arxiv.org/abs/1905.12926)
+Paper we studied: `Controllable Unsupervised Text Attribute Transfer via Editing Entangled Latent Representation`[(Arxiv:1905.12926)](https://arxiv.org/abs/1905.12926)
 
-## Introduction
+## About the paper
 In this work, we present a controllable unsupervised text attribute transfer framework, which can edit the entangled latent representation instead of modeling attribute and content separately. Specifically, we first propose a Transformer-based autoencoder to learn an entangled latent representation for a discrete text, then we transform the attribute transfer task to an optimization problem and propose the Fast-Gradient-Iterative-Modification algorithm to edit the latent representation until conforming to the target attribute. To the best of our knowledge, this is the first one that can not only control the degree of transfer freely but also perform sentiment transfer over multiple aspects at the same time. 
 
 ![Model architecture](/file/model.png)
@@ -12,13 +12,16 @@ In this work, we present a controllable unsupervised text attribute transfer fra
 ### Dependencies
 	Python 3.6
 	PyTorch 0.4
-	
+
 ### Directory description
 
 <pre><code>Root
-├─data/*        Store the data files used by models.
-├─method/*      Store the source code of models.
-└─outputs/*     Store the final output of models.
+├─data/*        Store datasets
+├─method/*      Store the source code and saved models
+├─fasttext/*		Fasttext classifier for evaluation
+├─results/*			Generated sentences and evaluation results
+├─srilm/*				Language model for evaluation
+└─outputs/*     Store evaluation scripts
 </code></pre>
 
 ###  Data Preprocessing
@@ -38,30 +41,24 @@ After the training finished, you can specify the check point directory in `main.
 	args.if_load_from_checkpoint = True
 	args.checkpoint_name = "xxx"
 
-Or you can load my check-point file:
-    
-    '/save/1557667911' for yelp;
-    '/save/1557668663' for amazon;
-    '/save/1557891887' for captions;    
-    
-and run:
-
+Or you can load trained models and run:
 	python main.py 
 
-## Example
+### Trained models
 
-Negative ->Positive:
-<pre><code>Source:                 it is n’t terrible , but it is n’t very good either .
-Human:                  it is n’t perfect , but it is very good .
-Our model(w={1.0}):     it is n’t terrible , but it is n’t very good either .
-Our model(w={2.0}):     it is n’t terrible , but it is n’t very good delicious either .
-Our model(w={3.0}):     it is n’t terrible , but it is very good delicious either .
-Our model(w={4.0}):     it is n’t terrible , but it is very good and delicious .
-Our model(w={5.0}):     it is n’t terrible , but it is very good and delicious appetizer .
-Our model(w={6.0}):     it is excellent , and it is very good and delicious well .
-</code></pre>
+Yelp dataset:
 
+- original parameters: 1576344354
+- 1 Transformer block: 1576119110
+- 512-dimensional latent space: 1576109322
+- 128-dimensional latent space: 1576097025
 
+Caption dataset:
+
+- original parameters: 1576006739
+- 1 Transformer block: 1576083260
+- 512-dimensional latent space: 1576011793
+- 128-dimensional latent space: 1576010830
 
 ## LICENSE
 
