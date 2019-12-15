@@ -25,7 +25,7 @@ In this work, we present a controllable unsupervised text attribute transfer fra
 </code></pre>
 
 ###  Data Preprocessing
-In the data directory，run:
+In the data directory, run:
 
 	python preprocessed_data.py 
 
@@ -41,8 +41,7 @@ After the training finished, you can specify the check point directory in `main.
 	args.if_load_from_checkpoint = True
 	args.checkpoint_name = "xxx"
 
-Or you can load trained models and run:
-	python main.py 
+Or you can load trained models and run `python main.py` .
 
 ### Trained models
 
