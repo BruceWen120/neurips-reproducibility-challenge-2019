@@ -36,12 +36,12 @@ To train the model, run in the method directory:
 
 	python main.py 
 
-After the training finished, you can specify the check point directory in `main.py`,
+To use trained models, you can specify the check point directory in `main.py`,
 
 	args.if_load_from_checkpoint = True
 	args.checkpoint_name = "xxx"
 
-Or you can load trained models and run `python main.py` .
+and then run `python main.py` .
 
 To use modified version of the original model, specify corresponding parameters after `python main.py`.
 
